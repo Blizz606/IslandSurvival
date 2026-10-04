@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Water_Fish
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 595235781, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 595235781, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 519101968, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 239855274, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: -417335521, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: -995305472, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 1844513197, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: -1979058051, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: -336331972, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 522667910, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 1684828685, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 472954184, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: -1774220107, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 1334925162, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 1790638638, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  - {fileID: 808431210, guid: 9dc84f6a81bd6c34e9e4f084e62b29cb, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0

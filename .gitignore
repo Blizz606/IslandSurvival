@@ -112,3 +112,6 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Local planning notes – never commit these to the repository.
+/Assets/DEVELOPMENT_ROADMAP.md*
