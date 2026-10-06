@@ -24,6 +24,20 @@ public class TestTreeGen : MonoBehaviour
     [Tooltip("Verschiebt nur den Stamm innerhalb seiner Grid-Zelle. Negative Y-Werte bewegen ihn nach unten.")]
     [SerializeField] private Vector2 treeTrunkOffset = Vector2.zero;
 
+    [Header("Holzfällen")]
+    [Tooltip("Wie viele Axttreffer ein Baum benötigt, bevor er zum Stumpf wird.")]
+    [SerializeField, Min(1)] private int hitsToFell = 3;
+    [Tooltip("Wird nach dem Fällen statt des Baumstamms angezeigt.")]
+    [SerializeField] private Sprite stumpSprite;
+    [Tooltip("Verschiebung des Stumpfs innerhalb seiner Grid-Zelle.")]
+    [SerializeField] private Vector2 stumpOffset = Vector2.zero;
+    [Tooltip("Zusätzliche Skalierung des Stumpfs relativ zur Baumskalierung.")]
+    [SerializeField, Min(0.01f)] private float stumpScaleMultiplier = 1f;
+    [Tooltip("Soll der Stumpf den Player weiterhin blockieren?")]
+    [SerializeField] private bool stumpBlocksPlayer;
+    [Tooltip("Zeigt bei einem generierten Baum bereits im Edit-Modus den Stumpf an. So lassen sich Sprite, Offset und Skalierung direkt einstellen.")]
+    [SerializeField] private bool previewStumpInEditor;
+
     [Header("Crown Fade")]
     [Tooltip("Deckkraft der Krone, wenn der Player darunter steht.")]
     [SerializeField, Range(0.05f, 1f)] private float crownOccludedAlpha = 0.55f;
@@ -44,12 +58,12 @@ public class TestTreeGen : MonoBehaviour
     [SerializeField, Min(1)] private int treesPerForest = 6;
     [SerializeField, Min(1f)] private float forestRadius = 25f;
 
-    [Header("Editor")]
-    [SerializeField] private bool generateOnValidate = true;
-
     private const string GeneratedParentName = "Generated Trees";
     private const string GeneratedCrownsParentName = "Generated Crowns";
+    private const string PreviewStumpName = "Stump Preview";
+    private readonly Dictionary<Vector3Int, int> treeHitPoints = new();
     private bool isGenerating;
+    private bool isUpdatingStumpPreview;
     private Transform generatedCrownsRoot;
 
     private void Start()
@@ -59,13 +73,12 @@ public class TestTreeGen : MonoBehaviour
 
     private void OnValidate()
     {
-        if (!generateOnValidate || Application.isPlaying || isGenerating)
+        if (Application.isPlaying || isGenerating || isUpdatingStumpPreview)
             return;
 
-        if (!HasTreeAssets())
-            return;
-
-        GenerateTrees();
+        // Inspector-Änderungen dürfen nicht die gesamte Baumwelt neu erzeugen.
+        // Sonst könnten temporäre Editor-Objekte mehrfach sichtbar werden.
+        RefreshStumpPreviewInEditor();
     }
 
     [ContextMenu("Generate Trees")]
@@ -87,6 +100,7 @@ public class TestTreeGen : MonoBehaviour
         }
 
         isGenerating = true;
+        treeHitPoints.Clear();
 
         System.Random random = new System.Random(seed);
         bool useTreeTilemap = !useLayeredTrees && treesTilemap != null;
@@ -96,6 +110,14 @@ public class TestTreeGen : MonoBehaviour
             treeTrunksTilemap.ClearAllTiles();
             treeCrownsTilemap.ClearAllTiles();
             ClearGeneratedCrowns();
+            ClearStumpPreview();
+
+            // Older generator versions created complete tree GameObjects in
+            // this container. Remove them before drawing the split trunk and
+            // crown layers, otherwise every regeneration shows duplicate trees.
+            Transform legacyFullTrees = transform.Find(GeneratedParentName);
+            if (legacyFullTrees != null)
+                ClearTrees(legacyFullTrees);
 
             // Remove the old full-tree visuals so they cannot overlap the
             // separated trunk/crown version.
@@ -191,6 +213,8 @@ public class TestTreeGen : MonoBehaviour
             renderer.sortingOrder = 1;
         }
 
+        ShowStumpPreviewInEditor(selectedCells);
+
         Debug.Log($"TestTreeGen: {amount} Bäume auf {validCells.Count} möglichen Landfeldern erzeugt.", this);
 
         isGenerating = false;
@@ -237,6 +261,42 @@ public class TestTreeGen : MonoBehaviour
 #endif
                 Destroy(crown.gameObject);
         }
+    }
+
+    /// <summary>Applies axe damage to the closest intact tree in range.</summary>
+    public bool TryChopTree(Vector2 playerPosition, float range, int damage = 1)
+    {
+        if (treeTrunksTilemap == null || range <= 0f || treeHitPoints.Count == 0)
+            return false;
+
+        float closestDistanceSqr = range * range;
+        Vector3Int closestTreeCell = default;
+        bool foundTree = false;
+
+        foreach (KeyValuePair<Vector3Int, int> tree in treeHitPoints)
+        {
+            Vector2 treePosition = GetTreePosition(tree.Key);
+            float distanceSqr = (treePosition - playerPosition).sqrMagnitude;
+            if (distanceSqr > closestDistanceSqr)
+                continue;
+
+            closestDistanceSqr = distanceSqr;
+            closestTreeCell = tree.Key;
+            foundTree = true;
+        }
+
+        if (!foundTree)
+            return false;
+
+        int remainingHits = treeHitPoints[closestTreeCell] - Mathf.Max(1, damage);
+        if (remainingHits > 0)
+        {
+            treeHitPoints[closestTreeCell] = remainingHits;
+            return true;
+        }
+
+        ReplaceTreeWithStump(closestTreeCell);
+        return true;
     }
 
     private Transform GetOrCreateParent()
@@ -481,10 +541,178 @@ public class TestTreeGen : MonoBehaviour
     private void PlaceLayeredTree(Vector3Int groundCell)
     {
         Vector3 worldPosition = groundTilemap.GetCellCenterWorld(groundCell);
+        Vector3Int treeCell = treeTrunksTilemap.WorldToCell(worldPosition);
 
         SetTile(treeTrunksTilemap, worldPosition,
             CreateTreeTile(treeTrunkSprite, Tile.ColliderType.Sprite), treeTrunkOffset);
+        treeHitPoints[treeCell] = hitsToFell;
         CreateFadingCrown(worldPosition);
+    }
+
+    private Vector2 GetTreePosition(Vector3Int treeCell)
+    {
+        Vector3 localTileOffset = treeTrunksTilemap
+            .GetTransformMatrix(treeCell)
+            .MultiplyPoint3x4(Vector3.zero);
+        return (Vector2)(treeTrunksTilemap.GetCellCenterWorld(treeCell)
+            + treeTrunksTilemap.transform.TransformVector(localTileOffset));
+    }
+
+    private void ReplaceTreeWithStump(Vector3Int treeCell)
+    {
+        treeHitPoints.Remove(treeCell);
+
+        Sprite replacementSprite = stumpSprite != null ? stumpSprite : treeTrunkSprite;
+        if (replacementSprite == null)
+        {
+            treeTrunksTilemap.SetTile(treeCell, null);
+        }
+        else
+        {
+            Tile.ColliderType colliderType = stumpBlocksPlayer
+                ? Tile.ColliderType.Sprite
+                : Tile.ColliderType.None;
+            treeTrunksTilemap.SetTile(treeCell, CreateTreeTile(replacementSprite, colliderType));
+            treeTrunksTilemap.SetTileFlags(treeCell, TileFlags.None);
+            treeTrunksTilemap.SetTransformMatrix(
+                treeCell,
+                Matrix4x4.TRS(
+                    (Vector3)stumpOffset,
+                    Quaternion.identity,
+                    Vector3.one * treeScale * stumpScaleMultiplier
+                )
+            );
+        }
+
+        RemoveCrownAt(treeTrunksTilemap.GetCellCenterWorld(treeCell));
+    }
+
+    private void ShowStumpPreviewInEditor(List<Vector3Int> treeCells)
+    {
+        if (Application.isPlaying
+            || !previewStumpInEditor
+            || stumpSprite == null
+            || !HasLayeredTreeSprites()
+            || treeCells.Count == 0)
+            return;
+
+        Vector3 previewWorldPosition = groundTilemap.GetCellCenterWorld(treeCells[0]);
+        Vector3Int previewTreeCell = treeTrunksTilemap.WorldToCell(previewWorldPosition);
+        CreateStumpPreview(previewTreeCell);
+    }
+
+    private void RefreshStumpPreviewInEditor()
+    {
+        isUpdatingStumpPreview = true;
+        try
+        {
+            ClearStumpPreview();
+            if (Application.isPlaying || !previewStumpInEditor || stumpSprite == null)
+                return;
+
+            if (TryGetPreviewTreeCell(out Vector3Int previewTreeCell))
+                CreateStumpPreview(previewTreeCell);
+        }
+        finally
+        {
+            isUpdatingStumpPreview = false;
+        }
+    }
+
+    private void CreateStumpPreview(Vector3Int previewTreeCell)
+    {
+        GameObject preview = new GameObject(PreviewStumpName);
+        preview.transform.SetParent(treeTrunksTilemap.transform);
+        preview.transform.position = GetStumpPosition(previewTreeCell);
+        preview.transform.localScale = Vector3.one * treeScale * stumpScaleMultiplier;
+
+        SpriteRenderer previewRenderer = preview.AddComponent<SpriteRenderer>();
+        previewRenderer.sprite = stumpSprite;
+
+        TilemapRenderer trunkRenderer = treeTrunksTilemap.GetComponent<TilemapRenderer>();
+        if (trunkRenderer != null)
+        {
+            previewRenderer.sortingLayerName = trunkRenderer.sortingLayerName;
+            previewRenderer.sortingOrder = trunkRenderer.sortingOrder + 1;
+        }
+    }
+
+    private bool TryGetPreviewTreeCell(out Vector3Int previewTreeCell)
+    {
+        foreach (KeyValuePair<Vector3Int, int> tree in treeHitPoints)
+        {
+            previewTreeCell = tree.Key;
+            return true;
+        }
+
+        if (treeTrunksTilemap != null)
+        {
+            foreach (Vector3Int cell in treeTrunksTilemap.cellBounds.allPositionsWithin)
+            {
+                if (!treeTrunksTilemap.HasTile(cell))
+                    continue;
+
+                previewTreeCell = cell;
+                return true;
+            }
+        }
+
+        previewTreeCell = default;
+        return false;
+    }
+
+    private Vector3 GetStumpPosition(Vector3Int treeCell)
+    {
+        return treeTrunksTilemap.GetCellCenterWorld(treeCell)
+            + treeTrunksTilemap.transform.TransformVector(stumpOffset);
+    }
+
+    private void ClearStumpPreview()
+    {
+        if (treeTrunksTilemap == null)
+            return;
+
+        // OnValidate can run multiple times while Inspector values change.
+        // Remove every old preview so no duplicate stump sprites accumulate.
+        for (int i = treeTrunksTilemap.transform.childCount - 1; i >= 0; i--)
+        {
+            Transform preview = treeTrunksTilemap.transform.GetChild(i);
+            if (preview.name != PreviewStumpName)
+                continue;
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                DestroyImmediate(preview.gameObject);
+            else
+#endif
+                Destroy(preview.gameObject);
+        }
+    }
+
+    private void RemoveCrownAt(Vector2 treePosition)
+    {
+        Transform crownsRoot = generatedCrownsRoot;
+        if (crownsRoot == null && treeCrownsTilemap != null)
+            crownsRoot = treeCrownsTilemap.transform.Find(GeneratedCrownsParentName);
+
+        if (crownsRoot == null)
+            return;
+
+        const float positionToleranceSqr = 0.01f;
+        for (int i = crownsRoot.childCount - 1; i >= 0; i--)
+        {
+            Transform crown = crownsRoot.GetChild(i);
+            if (((Vector2)crown.position - treePosition).sqrMagnitude > positionToleranceSqr)
+                continue;
+
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                DestroyImmediate(crown.gameObject);
+            else
+#endif
+                Destroy(crown.gameObject);
+            return;
+        }
     }
 
     private void CreateFadingCrown(Vector3 worldPosition)

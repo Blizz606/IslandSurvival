@@ -28,9 +28,22 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Sicherheit: Bewegung wird wieder freigegeben, falls der Animator falsch verbunden ist.")]
     [SerializeField, Min(0.1f)] private float chopFailSafeDuration = 2f;
 
+    [Header("Baum-Fällziel")]
+    [Tooltip("Die Tilemap mit den Baumstämmen. Der Character richtet sich beim Fällen zum nächsten Stamm aus.")]
+    [SerializeField] private Tilemap treeTrunksTilemap;
+    [Tooltip("Maximaler Abstand zum Stamm, in dem sich der Character beim Fällen automatisch ausrichtet.")]
+    [SerializeField, Min(0f)] private float treeChopRange = 1.25f;
+    [Tooltip("Erzeugt und verwaltet die fällbaren Bäume.")]
+    [SerializeField] private TestTreeGen treeGenerator;
+    [Tooltip("Schaden pro Axtschlag.")]
+    [SerializeField, Min(1)] private int axeDamage = 1;
+
     [Header("Kamera")]
     [SerializeField] private bool followCamera = true;
-    [SerializeField, Min(0f)] private float cameraSmoothTime = 0.15f;
+    [SerializeField, Min(0f)] private float cameraSmoothTime = 0f;
+    [Tooltip("Rundet die Kamera auf das Pixelraster, damit Pixel-Art beim Laufen nicht unscharf wird.")]
+    [SerializeField] private bool snapCameraToPixelGrid = true;
+    [SerializeField, Min(1f)] private float cameraPixelsPerUnit = 100f;
 
     [Header("Darstellung")]
     [SerializeField] private string renderSortingLayer = "Default";
@@ -70,6 +83,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (animator == null)
             animator = GetComponentInChildren<Animator>(true);
+
+        if (treeGenerator == null)
+            treeGenerator = FindFirstObjectByType<TestTreeGen>();
 
         chopTriggerHash = Animator.StringToHash(chopTrigger);
         CacheAnimatorParameters();
@@ -157,12 +173,87 @@ public class PlayerMovement : MonoBehaviour
         if (isChopping || !hasChopTrigger || animator == null)
             return false;
 
+        FaceNearbyTree();
+        TryChopNearbyTree();
         isChopping = true;
         hasEnteredChopState = false;
         chopStartTime = Time.unscaledTime;
         input = Vector2.zero;
         animator.SetTrigger(chopTriggerHash);
         return true;
+    }
+
+    private void TryChopNearbyTree()
+    {
+        if (treeGenerator == null)
+            treeGenerator = FindFirstObjectByType<TestTreeGen>();
+
+        if (treeGenerator != null)
+            treeGenerator.TryChopTree(body.position, treeChopRange, axeDamage);
+    }
+
+    private void FaceNearbyTree()
+    {
+        if (treeTrunksTilemap == null || treeChopRange <= 0f)
+            return;
+
+        // Der TilemapCollider kennt die reale Form und Verschiebung jedes
+        // Stamms. Dadurch wird auch bei skalierten oder verschobenen Tiles
+        // immer der sichtbare Stamm als Ziel verwendet.
+        Collider2D treeCollider = treeTrunksTilemap.GetComponent<Collider2D>();
+        if (treeCollider != null)
+        {
+            Vector2 colliderDirection = treeCollider.ClosestPoint(body.position) - body.position;
+            if (colliderDirection.sqrMagnitude > 0.0001f
+                && colliderDirection.sqrMagnitude <= treeChopRange * treeChopRange)
+            {
+                facingDirection = GetCardinalDirection(colliderDirection);
+                UpdateAnimator();
+                return;
+            }
+        }
+
+        Vector3Int playerCell = treeTrunksTilemap.WorldToCell(body.position);
+        Vector3 cellSize = treeTrunksTilemap.layoutGrid.cellSize;
+        float smallestCellSize = Mathf.Min(Mathf.Abs(cellSize.x), Mathf.Abs(cellSize.y));
+        if (smallestCellSize <= 0f)
+            return;
+
+        int searchRadius = Mathf.CeilToInt(treeChopRange / smallestCellSize);
+        float closestDistanceSqr = treeChopRange * treeChopRange;
+        Vector2 nearestTreeDirection = Vector2.zero;
+
+        for (int x = -searchRadius; x <= searchRadius; x++)
+        {
+            for (int y = -searchRadius; y <= searchRadius; y++)
+            {
+                Vector3Int cell = playerCell + new Vector3Int(x, y, 0);
+                if (!treeTrunksTilemap.HasTile(cell))
+                    continue;
+
+                // TestTreeGen verschiebt jeden Stamm innerhalb seiner Tilemap-Zelle.
+                // Die Animation muss zum sichtbaren Stamm zeigen, nicht zur
+                // ursprünglichen Mitte der Zelle.
+                Vector3 localTileOffset = treeTrunksTilemap
+                    .GetTransformMatrix(cell)
+                    .MultiplyPoint3x4(Vector3.zero);
+                Vector2 treePosition = (Vector2)(treeTrunksTilemap.GetCellCenterWorld(cell)
+                    + treeTrunksTilemap.transform.TransformVector(localTileOffset));
+                Vector2 direction = treePosition - body.position;
+                float distanceSqr = direction.sqrMagnitude;
+                if (distanceSqr <= 0.0001f || distanceSqr > closestDistanceSqr)
+                    continue;
+
+                closestDistanceSqr = distanceSqr;
+                nearestTreeDirection = direction;
+            }
+        }
+
+        if (nearestTreeDirection.sqrMagnitude <= 0f)
+            return;
+
+        facingDirection = GetCardinalDirection(nearestTreeDirection);
+        UpdateAnimator();
     }
 
     private void UpdateChopLock()
@@ -297,11 +388,20 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 targetPosition = transform.position;
         targetPosition.z = mainCamera.transform.position.z;
-        mainCamera.transform.position = Vector3.SmoothDamp(
+        Vector3 nextCameraPosition = Vector3.SmoothDamp(
             mainCamera.transform.position,
             targetPosition,
             ref cameraVelocity,
             cameraSmoothTime
         );
+
+        if (snapCameraToPixelGrid)
+        {
+            float pixelSize = 1f / cameraPixelsPerUnit;
+            nextCameraPosition.x = Mathf.Round(nextCameraPosition.x / pixelSize) * pixelSize;
+            nextCameraPosition.y = Mathf.Round(nextCameraPosition.y / pixelSize) * pixelSize;
+        }
+
+        mainCamera.transform.position = nextCameraPosition;
     }
 }

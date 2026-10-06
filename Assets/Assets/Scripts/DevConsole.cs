@@ -30,6 +30,8 @@ public sealed class DevConsole : MonoBehaviour
     private TextMeshProUGUI outputText;
     private TMP_InputField inputField;
 
+    public static bool IsOpen => instance != null && instance.panel != null && instance.panel.activeSelf;
+
     private sealed class Command
     {
         public string Description;
