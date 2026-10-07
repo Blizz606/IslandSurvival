@@ -1,5 +1,18 @@
+using System;
 using UnityEditor;
 using UnityEngine;
+
+internal static class GeneratorInspectorUi
+{
+    public static void DrawActionButton(UnityEngine.Object target, string label, float height, Action action)
+    {
+        if (!GUILayout.Button(label, GUILayout.Height(height)))
+            return;
+
+        action();
+        EditorUtility.SetDirty(target);
+    }
+}
 
 [CustomEditor(typeof(IslandGenerator))]
 public class IslandGeneratorEditor : Editor
@@ -9,18 +22,9 @@ public class IslandGeneratorEditor : Editor
         DrawDefaultInspector();
 
         EditorGUILayout.Space(8f);
-        if (GUILayout.Button("Generate Island", GUILayout.Height(30f)))
-        {
-            ((IslandGenerator)target).GenerateIsland();
-            EditorUtility.SetDirty(target);
-        }
-
-        if (GUILayout.Button("Generate All (New Seed)", GUILayout.Height(30f)))
-        {
-            ((IslandGenerator)target).GenerateAll();
-            EditorUtility.SetDirty(target);
-        }
-
+        IslandGenerator generator = (IslandGenerator)target;
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Island", 30f, generator.GenerateIsland);
+        GeneratorInspectorUi.DrawActionButton(target, "Generate All (New Seed)", 30f, generator.GenerateAll);
     }
 }
 
@@ -32,17 +36,9 @@ public class TestTreeGenEditor : Editor
         DrawDefaultInspector();
 
         EditorGUILayout.Space(8f);
-        if (GUILayout.Button("Generate Trees", GUILayout.Height(30f)))
-        {
-            ((TestTreeGen)target).GenerateTrees();
-            EditorUtility.SetDirty(target);
-        }
-
-        if (GUILayout.Button("New Random Tree Seed", GUILayout.Height(24f)))
-        {
-            ((TestTreeGen)target).RandomizeSeed();
-            EditorUtility.SetDirty(target);
-        }
+        TestTreeGen generator = (TestTreeGen)target;
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Trees", 30f, generator.GenerateTrees);
+        GeneratorInspectorUi.DrawActionButton(target, "New Random Tree Seed", 24f, generator.RandomizeSeed);
     }
 }
 
@@ -54,17 +50,9 @@ public class TestPlantGenEditor : Editor
         DrawDefaultInspector();
 
         EditorGUILayout.Space(8f);
-        if (GUILayout.Button("Generate Plants", GUILayout.Height(30f)))
-        {
-            ((TestPlantGen)target).GeneratePlants();
-            EditorUtility.SetDirty(target);
-        }
-
-        if (GUILayout.Button("New Random Plant Seed", GUILayout.Height(24f)))
-        {
-            ((TestPlantGen)target).RandomizeSeed();
-            EditorUtility.SetDirty(target);
-        }
+        TestPlantGen generator = (TestPlantGen)target;
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Plants", 30f, generator.GeneratePlants);
+        GeneratorInspectorUi.DrawActionButton(target, "New Random Plant Seed", 24f, generator.RandomizeSeed);
     }
 }
 
@@ -76,23 +64,10 @@ public class TestWaterGenEditor : Editor
         DrawDefaultInspector();
 
         EditorGUILayout.Space(8f);
-        if (GUILayout.Button("Generate Water", GUILayout.Height(30f)))
-        {
-            ((TestWaterGen)target).GenerateWater();
-            EditorUtility.SetDirty(target);
-        }
-
-        if (GUILayout.Button("Generate Fish", GUILayout.Height(24f)))
-        {
-            ((TestWaterGen)target).GenerateFish();
-            EditorUtility.SetDirty(target);
-        }
-
-        if (GUILayout.Button("New Random Fish Seed", GUILayout.Height(24f)))
-        {
-            ((TestWaterGen)target).RandomizeFishSeed();
-            EditorUtility.SetDirty(target);
-        }
+        TestWaterGen generator = (TestWaterGen)target;
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Water", 30f, generator.GenerateWater);
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Fish", 24f, generator.GenerateFish);
+        GeneratorInspectorUi.DrawActionButton(target, "New Random Fish Seed", 24f, generator.RandomizeFishSeed);
     }
 }
 
@@ -104,10 +79,7 @@ public class TestBeachGenEditor : Editor
         DrawDefaultInspector();
 
         EditorGUILayout.Space(8f);
-        if (GUILayout.Button("Generate Beach", GUILayout.Height(30f)))
-        {
-            ((TestBeachGen)target).GenerateBeach();
-            EditorUtility.SetDirty(target);
-        }
+        TestBeachGen generator = (TestBeachGen)target;
+        GeneratorInspectorUi.DrawActionButton(target, "Generate Beach", 30f, generator.GenerateBeach);
     }
 }

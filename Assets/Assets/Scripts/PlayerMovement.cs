@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     private int chopTriggerHash;
     private bool isChopping;
     private bool hasEnteredChopState;
+    private bool hasPendingChopHit;
     private float chopStartTime;
 
     private void Awake()
@@ -85,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             animator = GetComponentInChildren<Animator>(true);
 
         if (treeGenerator == null)
-            treeGenerator = FindFirstObjectByType<TestTreeGen>();
+            treeGenerator = FindAnyObjectByType<TestTreeGen>();
 
         chopTriggerHash = Animator.StringToHash(chopTrigger);
         CacheAnimatorParameters();
@@ -174,9 +175,9 @@ public class PlayerMovement : MonoBehaviour
             return false;
 
         FaceNearbyTree();
-        TryChopNearbyTree();
         isChopping = true;
         hasEnteredChopState = false;
+        hasPendingChopHit = true;
         chopStartTime = Time.unscaledTime;
         input = Vector2.zero;
         animator.SetTrigger(chopTriggerHash);
@@ -186,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
     private void TryChopNearbyTree()
     {
         if (treeGenerator == null)
-            treeGenerator = FindFirstObjectByType<TestTreeGen>();
+            treeGenerator = FindAnyObjectByType<TestTreeGen>();
 
         if (treeGenerator != null)
             treeGenerator.TryChopTree(body.position, treeChopRange, axeDamage);
@@ -194,7 +195,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void FaceNearbyTree()
     {
-        if (treeTrunksTilemap == null || treeChopRange <= 0f)
+        if (treeChopRange <= 0f)
+            return;
+
+        if (treeGenerator == null)
+            treeGenerator = FindAnyObjectByType<TestTreeGen>();
+
+        if (treeGenerator != null
+            && treeGenerator.TryGetClosestTreeDirection(body.position, treeChopRange, out Vector2 treeDirection))
+        {
+            facingDirection = GetCardinalDirection(treeDirection);
+            UpdateAnimator();
+            return;
+        }
+
+        if (treeTrunksTilemap == null)
             return;
 
         // Der TilemapCollider kennt die reale Form und Verschiebung jedes
@@ -274,6 +289,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (hasEnteredChopState && !animator.IsInTransition(0))
             {
+                ApplyPendingChopHit();
                 isChopping = false;
                 return;
             }
@@ -281,7 +297,21 @@ public class PlayerMovement : MonoBehaviour
 
         // Prevents a permanent movement lock when a Chop transition is configured incorrectly.
         if (Time.unscaledTime - chopStartTime >= chopFailSafeDuration)
+        {
+            // No hit is applied when the Chop state never started. This avoids
+            // cutting a tree if the Animator transition is misconfigured.
+            hasPendingChopHit = false;
             isChopping = false;
+        }
+    }
+
+    private void ApplyPendingChopHit()
+    {
+        if (!hasPendingChopHit)
+            return;
+
+        hasPendingChopHit = false;
+        TryChopNearbyTree();
     }
 
     private void CacheAnimatorParameters()
@@ -332,16 +362,42 @@ public class PlayerMovement : MonoBehaviour
         if (!blockPhysicsColliders)
             return false;
 
+        Vector2 movement = worldPosition - body.position;
+        if (movement.sqrMagnitude > 0.000001f)
+        {
+            // Check the whole movement path, not just its endpoint. Small or
+            // thin custom physics shapes (such as a tree stump) could
+            // otherwise be skipped in a single physics frame.
+            RaycastHit2D[] pathHits = Physics2D.CircleCastAll(
+                body.position,
+                collisionRadius,
+                movement.normalized,
+                movement.magnitude
+            );
+
+            foreach (RaycastHit2D hit in pathHits)
+            {
+                if (IsBlockingCollider(hit.collider))
+                    return true;
+            }
+        }
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(worldPosition, collisionRadius);
         foreach (Collider2D hit in hits)
         {
-            if (hit.isTrigger || hit.transform == transform || hit.transform.IsChildOf(transform))
-                continue;
-
-            return true;
+            if (IsBlockingCollider(hit))
+                return true;
         }
 
         return false;
+    }
+
+    private bool IsBlockingCollider(Collider2D hit)
+    {
+        return hit != null
+            && !hit.isTrigger
+            && hit.transform != transform
+            && !hit.transform.IsChildOf(transform);
     }
 
     private void ConfigurePlayerRenderers()

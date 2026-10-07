@@ -14,6 +14,10 @@ public class TestTreeGen : MonoBehaviour
     [SerializeField] private Sprite[] treeSprites;
     [SerializeField] private TileBase[] treeTiles;
 
+    [Header("Tree Prefab")]
+    [Tooltip("Instanz dieses Prefabs für jeden Baum. Es muss die Kinder Trunk, Crown und Stump enthalten.")]
+    [SerializeField] private HarvestableTree treePrefab;
+
     [Header("Layered Tree (optional)")]
     [Tooltip("Nur der Stamm: liegt hinter dem Player und erhält die Collider.")]
     [SerializeField] private Tilemap treeTrunksTilemap;
@@ -29,7 +33,7 @@ public class TestTreeGen : MonoBehaviour
     [SerializeField, Min(1)] private int hitsToFell = 3;
     [Tooltip("Wird nach dem Fällen statt des Baumstamms angezeigt.")]
     [SerializeField] private Sprite stumpSprite;
-    [Tooltip("Verschiebung des Stumpfs innerhalb seiner Grid-Zelle.")]
+    [Tooltip("Feinverschiebung des Stumpfs relativ zur Unterkante des sichtbaren Stamms.")]
     [SerializeField] private Vector2 stumpOffset = Vector2.zero;
     [Tooltip("Zusätzliche Skalierung des Stumpfs relativ zur Baumskalierung.")]
     [SerializeField, Min(0.01f)] private float stumpScaleMultiplier = 1f;
@@ -59,12 +63,8 @@ public class TestTreeGen : MonoBehaviour
     [SerializeField, Min(1f)] private float forestRadius = 25f;
 
     private const string GeneratedParentName = "Generated Trees";
-    private const string GeneratedCrownsParentName = "Generated Crowns";
-    private const string PreviewStumpName = "Stump Preview";
-    private readonly Dictionary<Vector3Int, int> treeHitPoints = new();
+    private readonly List<HarvestableTree> spawnedTrees = new();
     private bool isGenerating;
-    private bool isUpdatingStumpPreview;
-    private Transform generatedCrownsRoot;
 
     private void Start()
     {
@@ -73,21 +73,18 @@ public class TestTreeGen : MonoBehaviour
 
     private void OnValidate()
     {
-        if (Application.isPlaying || isGenerating || isUpdatingStumpPreview)
-            return;
-
-        // Inspector-Änderungen dürfen nicht die gesamte Baumwelt neu erzeugen.
-        // Sonst könnten temporäre Editor-Objekte mehrfach sichtbar werden.
-        RefreshStumpPreviewInEditor();
+        // Bäume werden nur per Inspector-Button oder beim Spielstart erzeugt.
+        // So kann eine Offset-Änderung niemals Objekte duplizieren.
     }
 
     [ContextMenu("Generate Trees")]
     public void GenerateTrees()
     {
         FindLayeredTreeTilemaps();
-        bool useLayeredTrees = HasLayeredTreeSprites();
+        bool useLayeredTrees = treePrefab != null || HasLayeredTreeSprites();
 
-        if (useLayeredTrees && (treeTrunksTilemap == null || treeCrownsTilemap == null))
+        if (useLayeredTrees && treePrefab == null
+            && (treeTrunksTilemap == null || treeCrownsTilemap == null))
         {
             Debug.LogWarning("TestTreeGen: TreesTrunk und TreesCrown im Inspector zuweisen oder als Kinder des Grid benennen.", this);
             return;
@@ -100,21 +97,21 @@ public class TestTreeGen : MonoBehaviour
         }
 
         isGenerating = true;
-        treeHitPoints.Clear();
+        spawnedTrees.Clear();
 
         System.Random random = new System.Random(seed);
         bool useTreeTilemap = !useLayeredTrees && treesTilemap != null;
         Transform parent = null;
         if (useLayeredTrees)
         {
-            treeTrunksTilemap.ClearAllTiles();
-            treeCrownsTilemap.ClearAllTiles();
-            ClearGeneratedCrowns();
-            ClearStumpPreview();
+            if (treeTrunksTilemap != null)
+                treeTrunksTilemap.ClearAllTiles();
+            if (treeCrownsTilemap != null)
+                treeCrownsTilemap.ClearAllTiles();
+            ClearLegacyTreeVisuals();
 
-            // Older generator versions created complete tree GameObjects in
-            // this container. Remove them before drawing the split trunk and
-            // crown layers, otherwise every regeneration shows duplicate trees.
+            // Jeder neu erzeugte Baum hat genau ein Root-Objekt. Dieses wird
+            // vor jeder Generierung komplett geleert, damit nichts dupliziert.
             Transform legacyFullTrees = transform.Find(GeneratedParentName);
             if (legacyFullTrees != null)
                 ClearTrees(legacyFullTrees);
@@ -213,7 +210,7 @@ public class TestTreeGen : MonoBehaviour
             renderer.sortingOrder = 1;
         }
 
-        ShowStumpPreviewInEditor(selectedCells);
+        ShowStumpPreviewInEditor();
 
         Debug.Log($"TestTreeGen: {amount} Bäume auf {validCells.Count} möglichen Landfeldern erzeugt.", this);
 
@@ -240,63 +237,99 @@ public class TestTreeGen : MonoBehaviour
             }
         }
 
-        Transform crownsRoot = generatedCrownsRoot;
-        if (crownsRoot == null && treeCrownsTilemap != null)
-            crownsRoot = treeCrownsTilemap.transform.Find(GeneratedCrownsParentName);
-
-        if (crownsRoot == null)
-            return;
-
         float clearanceSqr = clearance * clearance;
-        for (int i = crownsRoot.childCount - 1; i >= 0; i--)
+        List<HarvestableTree> trees = new List<HarvestableTree>(FindSpawnedTrees());
+        foreach (HarvestableTree tree in trees)
         {
-            Transform crown = crownsRoot.GetChild(i);
-            if (((Vector2)(crown.position - worldPosition)).sqrMagnitude > clearanceSqr)
+            if (tree == null
+                || ((Vector2)(tree.transform.position - worldPosition)).sqrMagnitude > clearanceSqr)
                 continue;
 
 #if UNITY_EDITOR
             if (!Application.isPlaying)
-                DestroyImmediate(crown.gameObject);
+                DestroyImmediate(tree.gameObject);
             else
 #endif
-                Destroy(crown.gameObject);
+                Destroy(tree.gameObject);
+
+            spawnedTrees.Remove(tree);
         }
     }
 
     /// <summary>Applies axe damage to the closest intact tree in range.</summary>
     public bool TryChopTree(Vector2 playerPosition, float range, int damage = 1)
     {
-        if (treeTrunksTilemap == null || range <= 0f || treeHitPoints.Count == 0)
+        if (range <= 0f)
             return false;
 
         float closestDistanceSqr = range * range;
-        Vector3Int closestTreeCell = default;
-        bool foundTree = false;
+        HarvestableTree closestTree = null;
 
-        foreach (KeyValuePair<Vector3Int, int> tree in treeHitPoints)
+        foreach (HarvestableTree tree in FindSpawnedTrees())
         {
-            Vector2 treePosition = GetTreePosition(tree.Key);
+            if (tree == null || tree.IsFelled)
+                continue;
+
+            Vector2 treePosition = tree.InteractionPosition;
             float distanceSqr = (treePosition - playerPosition).sqrMagnitude;
             if (distanceSqr > closestDistanceSqr)
                 continue;
 
             closestDistanceSqr = distanceSqr;
-            closestTreeCell = tree.Key;
-            foundTree = true;
+            closestTree = tree;
         }
 
-        if (!foundTree)
+        if (closestTree == null)
             return false;
 
-        int remainingHits = treeHitPoints[closestTreeCell] - Mathf.Max(1, damage);
-        if (remainingHits > 0)
+        closestTree.ApplyDamage(Mathf.Max(1, damage));
+        return true;
+    }
+
+    public bool TryGetClosestTreeDirection(Vector2 playerPosition, float range, out Vector2 direction)
+    {
+        float closestDistanceSqr = range * range;
+        direction = Vector2.zero;
+
+        foreach (HarvestableTree tree in FindSpawnedTrees())
         {
-            treeHitPoints[closestTreeCell] = remainingHits;
-            return true;
+            if (tree == null || tree.IsFelled)
+                continue;
+
+            Vector2 candidate = tree.InteractionPosition - playerPosition;
+            float distanceSqr = candidate.sqrMagnitude;
+            if (distanceSqr <= 0.0001f || distanceSqr > closestDistanceSqr)
+                continue;
+
+            closestDistanceSqr = distanceSqr;
+            direction = candidate;
         }
 
-        ReplaceTreeWithStump(closestTreeCell);
-        return true;
+        return direction.sqrMagnitude > 0f;
+    }
+
+    /// <summary>Returns true when a generated tree root is within the supplied world-space radius.</summary>
+    public bool HasTreeNear(Vector2 worldPosition, float radius)
+    {
+        float radiusSqr = Mathf.Max(0f, radius) * Mathf.Max(0f, radius);
+        foreach (HarvestableTree tree in FindSpawnedTrees())
+        {
+            if (tree == null)
+                continue;
+
+            if (((Vector2)tree.transform.position - worldPosition).sqrMagnitude <= radiusSqr)
+                return true;
+        }
+
+        return false;
+    }
+
+    private IEnumerable<HarvestableTree> FindSpawnedTrees()
+    {
+        if (spawnedTrees.Count > 0)
+            return spawnedTrees;
+
+        return FindObjectsByType<HarvestableTree>(FindObjectsInactive.Exclude);
     }
 
     private Transform GetOrCreateParent()
@@ -416,6 +449,7 @@ public class TestTreeGen : MonoBehaviour
     private float GetMinimumTreeSpacing()
     {
         float widestSprite = 0f;
+        AddPrefabWidth(ref widestSprite);
         AddSpriteWidth(treeTrunkSprite, ref widestSprite);
         AddSpriteWidth(treeCrownSprite, ref widestSprite);
 
@@ -440,6 +474,22 @@ public class TestTreeGen : MonoBehaviour
         return Mathf.Max(0.1f, visualDiameter + Mathf.Max(0f, treeSpacing));
     }
 
+    private void AddPrefabWidth(ref float widestSprite)
+    {
+        if (treePrefab == null)
+            return;
+
+        foreach (SpriteRenderer renderer in treePrefab.GetComponentsInChildren<SpriteRenderer>(true))
+        {
+            if (renderer.sprite == null)
+                continue;
+
+            float scaledWidth = renderer.sprite.bounds.size.magnitude
+                * Mathf.Max(Mathf.Abs(renderer.transform.localScale.x), Mathf.Abs(renderer.transform.localScale.y));
+            widestSprite = Mathf.Max(widestSprite, scaledWidth / treeScale);
+        }
+    }
+
     private static void AddSpriteWidth(Sprite sprite, ref float widestSprite)
     {
         if (sprite == null)
@@ -451,16 +501,17 @@ public class TestTreeGen : MonoBehaviour
     private void ClearTrees(Transform parent)
     {
         for (int i = parent.childCount - 1; i >= 0; i--)
-        {
-            GameObject child = parent.GetChild(i).gameObject;
+            DestroyGeneratedObject(parent.GetChild(i).gameObject);
+    }
 
+    private static void DestroyGeneratedObject(GameObject target)
+    {
 #if UNITY_EDITOR
-            if (!Application.isPlaying)
-                DestroyImmediate(child);
-            else
+        if (!Application.isPlaying)
+            DestroyImmediate(target);
+        else
 #endif
-                Destroy(child);
-        }
+            Destroy(target);
     }
 
     private List<Vector3Int> CollectValidCells(int clearance, System.Random random, bool applySpawnChance = true)
@@ -501,6 +552,9 @@ public class TestTreeGen : MonoBehaviour
 
     private bool HasTreeAssets()
     {
+        if (treePrefab != null)
+            return groundTilemap != null;
+
         if (HasLayeredTreeSprites())
             return groundTilemap != null;
 
@@ -541,255 +595,86 @@ public class TestTreeGen : MonoBehaviour
     private void PlaceLayeredTree(Vector3Int groundCell)
     {
         Vector3 worldPosition = groundTilemap.GetCellCenterWorld(groundCell);
-        Vector3Int treeCell = treeTrunksTilemap.WorldToCell(worldPosition);
 
-        SetTile(treeTrunksTilemap, worldPosition,
-            CreateTreeTile(treeTrunkSprite, Tile.ColliderType.Sprite), treeTrunkOffset);
-        treeHitPoints[treeCell] = hitsToFell;
-        CreateFadingCrown(worldPosition);
-    }
-
-    private Vector2 GetTreePosition(Vector3Int treeCell)
-    {
-        Vector3 localTileOffset = treeTrunksTilemap
-            .GetTransformMatrix(treeCell)
-            .MultiplyPoint3x4(Vector3.zero);
-        return (Vector2)(treeTrunksTilemap.GetCellCenterWorld(treeCell)
-            + treeTrunksTilemap.transform.TransformVector(localTileOffset));
-    }
-
-    private void ReplaceTreeWithStump(Vector3Int treeCell)
-    {
-        treeHitPoints.Remove(treeCell);
-
-        Sprite replacementSprite = stumpSprite != null ? stumpSprite : treeTrunkSprite;
-        if (replacementSprite == null)
+        if (treePrefab != null)
         {
-            treeTrunksTilemap.SetTile(treeCell, null);
-        }
-        else
-        {
-            Tile.ColliderType colliderType = stumpBlocksPlayer
-                ? Tile.ColliderType.Sprite
-                : Tile.ColliderType.None;
-            treeTrunksTilemap.SetTile(treeCell, CreateTreeTile(replacementSprite, colliderType));
-            treeTrunksTilemap.SetTileFlags(treeCell, TileFlags.None);
-            treeTrunksTilemap.SetTransformMatrix(
-                treeCell,
-                Matrix4x4.TRS(
-                    (Vector3)stumpOffset,
-                    Quaternion.identity,
-                    Vector3.one * treeScale * stumpScaleMultiplier
-                )
-            );
-        }
-
-        RemoveCrownAt(treeTrunksTilemap.GetCellCenterWorld(treeCell));
-    }
-
-    private void ShowStumpPreviewInEditor(List<Vector3Int> treeCells)
-    {
-        if (Application.isPlaying
-            || !previewStumpInEditor
-            || stumpSprite == null
-            || !HasLayeredTreeSprites()
-            || treeCells.Count == 0)
+            HarvestableTree prefabInstance = InstantiateTreePrefab(worldPosition);
+            prefabInstance.name = treePrefab.name;
+            prefabInstance.ConfigureFromPrefab(hitsToFell, stumpBlocksPlayer);
+            spawnedTrees.Add(prefabInstance);
             return;
-
-        Vector3 previewWorldPosition = groundTilemap.GetCellCenterWorld(treeCells[0]);
-        Vector3Int previewTreeCell = treeTrunksTilemap.WorldToCell(previewWorldPosition);
-        CreateStumpPreview(previewTreeCell);
-    }
-
-    private void RefreshStumpPreviewInEditor()
-    {
-        isUpdatingStumpPreview = true;
-        try
-        {
-            ClearStumpPreview();
-            if (Application.isPlaying || !previewStumpInEditor || stumpSprite == null)
-                return;
-
-            if (TryGetPreviewTreeCell(out Vector3Int previewTreeCell))
-                CreateStumpPreview(previewTreeCell);
         }
-        finally
-        {
-            isUpdatingStumpPreview = false;
-        }
-    }
 
-    private void CreateStumpPreview(Vector3Int previewTreeCell)
-    {
-        GameObject preview = new GameObject(PreviewStumpName);
-        preview.transform.SetParent(treeTrunksTilemap.transform);
-        preview.transform.position = GetStumpPosition(previewTreeCell);
-        preview.transform.localScale = Vector3.one * treeScale * stumpScaleMultiplier;
-
-        SpriteRenderer previewRenderer = preview.AddComponent<SpriteRenderer>();
-        previewRenderer.sprite = stumpSprite;
+        GameObject treeObject = new GameObject("Tree");
+        treeObject.transform.SetParent(GetOrCreateParent(), false);
+        treeObject.transform.position = worldPosition;
 
         TilemapRenderer trunkRenderer = treeTrunksTilemap.GetComponent<TilemapRenderer>();
-        if (trunkRenderer != null)
-        {
-            previewRenderer.sortingLayerName = trunkRenderer.sortingLayerName;
-            previewRenderer.sortingOrder = trunkRenderer.sortingOrder + 1;
-        }
-    }
-
-    private bool TryGetPreviewTreeCell(out Vector3Int previewTreeCell)
-    {
-        foreach (KeyValuePair<Vector3Int, int> tree in treeHitPoints)
-        {
-            previewTreeCell = tree.Key;
-            return true;
-        }
-
-        if (treeTrunksTilemap != null)
-        {
-            foreach (Vector3Int cell in treeTrunksTilemap.cellBounds.allPositionsWithin)
-            {
-                if (!treeTrunksTilemap.HasTile(cell))
-                    continue;
-
-                previewTreeCell = cell;
-                return true;
-            }
-        }
-
-        previewTreeCell = default;
-        return false;
-    }
-
-    private Vector3 GetStumpPosition(Vector3Int treeCell)
-    {
-        return treeTrunksTilemap.GetCellCenterWorld(treeCell)
-            + treeTrunksTilemap.transform.TransformVector(stumpOffset);
-    }
-
-    private void ClearStumpPreview()
-    {
-        if (treeTrunksTilemap == null)
-            return;
-
-        // OnValidate can run multiple times while Inspector values change.
-        // Remove every old preview so no duplicate stump sprites accumulate.
-        for (int i = treeTrunksTilemap.transform.childCount - 1; i >= 0; i--)
-        {
-            Transform preview = treeTrunksTilemap.transform.GetChild(i);
-            if (preview.name != PreviewStumpName)
-                continue;
-
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                DestroyImmediate(preview.gameObject);
-            else
-#endif
-                Destroy(preview.gameObject);
-        }
-    }
-
-    private void RemoveCrownAt(Vector2 treePosition)
-    {
-        Transform crownsRoot = generatedCrownsRoot;
-        if (crownsRoot == null && treeCrownsTilemap != null)
-            crownsRoot = treeCrownsTilemap.transform.Find(GeneratedCrownsParentName);
-
-        if (crownsRoot == null)
-            return;
-
-        const float positionToleranceSqr = 0.01f;
-        for (int i = crownsRoot.childCount - 1; i >= 0; i--)
-        {
-            Transform crown = crownsRoot.GetChild(i);
-            if (((Vector2)crown.position - treePosition).sqrMagnitude > positionToleranceSqr)
-                continue;
-
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                DestroyImmediate(crown.gameObject);
-            else
-#endif
-                Destroy(crown.gameObject);
-            return;
-        }
-    }
-
-    private void CreateFadingCrown(Vector3 worldPosition)
-    {
-        GameObject crown = new GameObject("Tree Crown");
-        crown.transform.SetParent(GetOrCreateCrownsRoot(), false);
-        crown.transform.position = worldPosition;
-        crown.transform.localScale = Vector3.one * treeScale;
-
-        SpriteRenderer crownRenderer = crown.AddComponent<SpriteRenderer>();
-        crownRenderer.sprite = treeCrownSprite;
-
-        TilemapRenderer crownTilemapRenderer = treeCrownsTilemap.GetComponent<TilemapRenderer>();
-        if (crownTilemapRenderer != null)
-        {
-            crownRenderer.sortingLayerName = crownTilemapRenderer.sortingLayerName;
-            crownRenderer.sortingOrder = crownTilemapRenderer.sortingOrder;
-        }
-
-        TreeOcclusion occlusion = crown.AddComponent<TreeOcclusion>();
-        occlusion.renderSortingLayer = crownRenderer.sortingLayerName;
-        occlusion.treeSortingOrder = crownRenderer.sortingOrder;
-        occlusion.occludedAlpha = crownOccludedAlpha;
-        occlusion.fadeSpeed = crownFadeSpeed;
-        occlusion.fadeDistance = crownFadeDistance;
-        occlusion.logFadeChanges = false;
-    }
-
-    private Transform GetOrCreateCrownsRoot()
-    {
-        if (generatedCrownsRoot != null)
-            return generatedCrownsRoot;
-
-        Transform existingRoot = treeCrownsTilemap.transform.Find(GeneratedCrownsParentName);
-        if (existingRoot != null)
-        {
-            generatedCrownsRoot = existingRoot;
-            return generatedCrownsRoot;
-        }
-
-        GameObject root = new GameObject(GeneratedCrownsParentName);
-        root.transform.SetParent(treeCrownsTilemap.transform, false);
-        generatedCrownsRoot = root.transform;
-        return generatedCrownsRoot;
-    }
-
-    private void ClearGeneratedCrowns()
-    {
-        Transform root = generatedCrownsRoot;
-        if (root == null && treeCrownsTilemap != null)
-            root = treeCrownsTilemap.transform.Find(GeneratedCrownsParentName);
-
-        if (root == null)
-            return;
-
-        ClearTrees(root);
-        generatedCrownsRoot = root;
-    }
-
-    private void SetTile(
-        Tilemap tilemap,
-        Vector3 worldPosition,
-        Tile tile,
-        Vector2 localOffset
-    )
-    {
-        Vector3Int cell = tilemap.WorldToCell(worldPosition);
-        tilemap.SetTile(cell, tile);
-        tilemap.SetTileFlags(cell, TileFlags.None);
-        tilemap.SetTransformMatrix(
-            cell,
-            Matrix4x4.TRS(
-                (Vector3)localOffset,
-                Quaternion.identity,
-                Vector3.one * treeScale
-            )
+        TilemapRenderer crownRenderer = treeCrownsTilemap.GetComponent<TilemapRenderer>();
+        HarvestableTree tree = treeObject.AddComponent<HarvestableTree>();
+        tree.Configure(
+            treeTrunkSprite,
+            treeCrownSprite,
+            stumpSprite,
+            treeTrunkOffset,
+            stumpOffset,
+            treeScale,
+            stumpScaleMultiplier,
+            hitsToFell,
+            stumpBlocksPlayer,
+            trunkRenderer != null ? trunkRenderer.sortingLayerName : "Default",
+            trunkRenderer != null ? trunkRenderer.sortingOrder : 9,
+            crownRenderer != null ? crownRenderer.sortingOrder : 11,
+            crownOccludedAlpha,
+            crownFadeSpeed,
+            crownFadeDistance
         );
+        spawnedTrees.Add(tree);
+    }
+
+    private HarvestableTree InstantiateTreePrefab(Vector3 worldPosition)
+    {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            GameObject instance = (GameObject)UnityEditor.PrefabUtility.InstantiatePrefab(
+                treePrefab.gameObject,
+                GetOrCreateParent()
+            );
+            instance.transform.position = worldPosition;
+            return instance.GetComponent<HarvestableTree>();
+        }
+#endif
+
+        return Instantiate(treePrefab, worldPosition, Quaternion.identity, GetOrCreateParent());
+    }
+
+    private void ShowStumpPreviewInEditor()
+    {
+        if (Application.isPlaying || !previewStumpInEditor || spawnedTrees.Count == 0)
+            return;
+
+        spawnedTrees[0].SetPreview(true);
+    }
+
+    private void ClearLegacyTreeVisuals()
+    {
+        ClearLegacyVisualRoot(treeCrownsTilemap, "Generated Crowns");
+        ClearLegacyVisualRoot(treeTrunksTilemap, "Generated Stumps");
+        ClearLegacyVisualRoot(treeTrunksTilemap, "Stump Preview");
+    }
+
+    private void ClearLegacyVisualRoot(Tilemap tilemap, string objectName)
+    {
+        if (tilemap == null)
+            return;
+
+        for (int i = tilemap.transform.childCount - 1; i >= 0; i--)
+        {
+            Transform legacyVisual = tilemap.transform.GetChild(i);
+            if (legacyVisual.name == objectName)
+                DestroyGeneratedObject(legacyVisual.gameObject);
+        }
     }
 
     private TileBase GetRandomTreeTile(System.Random random)
@@ -820,5 +705,186 @@ public class TestTreeGen : MonoBehaviour
             cells[i] = cells[swapIndex];
             cells[swapIndex] = temporary;
         }
+    }
+}
+
+/// <summary>Legacy dynamic-tree implementation kept only for old scene data.</summary>
+internal sealed class LegacyHarvestableTree : MonoBehaviour
+{
+    private Transform trunk;
+    private Transform crown;
+    private Transform stump;
+    private int remainingHits;
+
+    public bool IsFelled { get; private set; }
+    public Vector2 InteractionPosition => trunk != null ? trunk.position : transform.position;
+
+    public void Configure(
+        Sprite trunkSprite,
+        Sprite crownSprite,
+        Sprite stumpSprite,
+        Vector2 trunkOffset,
+        Vector2 stumpOffset,
+        float treeScale,
+        float stumpScaleMultiplier,
+        int hitsToFell,
+        bool stumpBlocksPlayer,
+        string sortingLayer,
+        int trunkSortingOrder,
+        int crownSortingOrder,
+        float crownOccludedAlpha,
+        float crownFadeSpeed,
+        float crownFadeDistance
+    )
+    {
+        remainingHits = Mathf.Max(1, hitsToFell);
+        trunk = CreateVisual("Trunk", trunkSprite, trunkOffset, treeScale, sortingLayer, trunkSortingOrder);
+        crown = CreateVisual("Crown", crownSprite, Vector2.zero, treeScale, sortingLayer, crownSortingOrder);
+        stump = CreateVisual(
+            "Stump",
+            stumpSprite != null ? stumpSprite : trunkSprite,
+            Vector2.zero,
+            treeScale * stumpScaleMultiplier,
+            sortingLayer,
+            trunkSortingOrder
+        );
+
+        AlignStumpToTrunkBase(stumpOffset);
+        AddCollider(trunk, trunkSprite, true);
+        AddCollider(stump, stumpSprite != null ? stumpSprite : trunkSprite, stumpBlocksPlayer);
+        ConfigureCrownFade(crown, sortingLayer, crownSortingOrder, crownOccludedAlpha, crownFadeSpeed, crownFadeDistance);
+
+        if (stump != null)
+            stump.gameObject.SetActive(false);
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        if (IsFelled)
+            return;
+
+        remainingHits -= Mathf.Max(1, damage);
+        if (remainingHits <= 0)
+            Fell();
+    }
+
+    public void SetPreview(bool enabled)
+    {
+        if (!IsFelled && stump != null)
+            stump.gameObject.SetActive(enabled);
+    }
+
+    private void Fell()
+    {
+        IsFelled = true;
+        if (trunk != null)
+            trunk.gameObject.SetActive(false);
+        if (crown != null)
+            crown.gameObject.SetActive(false);
+        if (stump != null)
+            stump.gameObject.SetActive(true);
+    }
+
+    private Transform CreateVisual(
+        string objectName,
+        Sprite sprite,
+        Vector2 localOffset,
+        float scale,
+        string sortingLayer,
+        int sortingOrder
+    )
+    {
+        if (sprite == null)
+            return null;
+
+        GameObject visual = new GameObject(objectName);
+        visual.transform.SetParent(transform, false);
+        visual.transform.localPosition = localOffset;
+        visual.transform.localScale = Vector3.one * scale;
+
+        SpriteRenderer renderer = visual.AddComponent<SpriteRenderer>();
+        renderer.sprite = sprite;
+        renderer.sortingLayerName = sortingLayer;
+        renderer.sortingOrder = sortingOrder;
+        return visual.transform;
+    }
+
+    private void AlignStumpToTrunkBase(Vector2 offset)
+    {
+        if (trunk == null || stump == null)
+            return;
+
+        SpriteRenderer trunkRenderer = trunk.GetComponent<SpriteRenderer>();
+        SpriteRenderer stumpRenderer = stump.GetComponent<SpriteRenderer>();
+        if (trunkRenderer == null || stumpRenderer == null
+            || trunkRenderer.sprite == null || stumpRenderer.sprite == null)
+            return;
+
+        // The sprite pivots and scales can differ. Aligning their lower bounds
+        // makes every stump appear exactly at the base of its own visible trunk.
+        float trunkBottom = trunk.localPosition.y
+            + trunkRenderer.sprite.bounds.min.y * trunk.localScale.y;
+        float stumpBottomOffset = stumpRenderer.sprite.bounds.min.y * stump.localScale.y;
+
+        stump.localPosition = new Vector3(
+            trunk.localPosition.x + offset.x,
+            trunkBottom - stumpBottomOffset + offset.y,
+            trunk.localPosition.z
+        );
+    }
+
+    private static void AddCollider(Transform target, Sprite sprite, bool enabled)
+    {
+        if (target == null || sprite == null || !enabled)
+            return;
+
+        // A BoxCollider would discard the custom Physics Shape authored in
+        // Unity's Sprite Editor. Copy every shape path onto a PolygonCollider
+        // instead, so the visible tree and its collision area match exactly.
+        PolygonCollider2D collider = target.gameObject.AddComponent<PolygonCollider2D>();
+        int shapeCount = sprite.GetPhysicsShapeCount();
+
+        if (shapeCount <= 0)
+        {
+            Vector2 extents = sprite.bounds.extents;
+            collider.SetPath(0, new[]
+            {
+                new Vector2(-extents.x, -extents.y),
+                new Vector2(-extents.x, extents.y),
+                new Vector2(extents.x, extents.y),
+                new Vector2(extents.x, -extents.y),
+            });
+            return;
+        }
+
+        collider.pathCount = shapeCount;
+        List<Vector2> path = new List<Vector2>();
+        for (int pathIndex = 0; pathIndex < shapeCount; pathIndex++)
+        {
+            path.Clear();
+            sprite.GetPhysicsShape(pathIndex, path);
+            collider.SetPath(pathIndex, path);
+        }
+    }
+
+    private static void ConfigureCrownFade(
+        Transform target,
+        string sortingLayer,
+        int sortingOrder,
+        float occludedAlpha,
+        float fadeSpeed,
+        float fadeDistance
+    )
+    {
+        if (target == null)
+            return;
+
+        TreeOcclusion occlusion = target.gameObject.AddComponent<TreeOcclusion>();
+        occlusion.renderSortingLayer = sortingLayer;
+        occlusion.treeSortingOrder = sortingOrder;
+        occlusion.occludedAlpha = occludedAlpha;
+        occlusion.fadeSpeed = fadeSpeed;
+        occlusion.fadeDistance = fadeDistance;
+        occlusion.logFadeChanges = false;
     }
 }

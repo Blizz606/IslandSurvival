@@ -8,6 +8,7 @@ public class TestPlantGen : MonoBehaviour
     [Header("Ground")]
     [SerializeField] private Tilemap groundTilemap;
     [SerializeField] private Tilemap treeTrunksTilemap;
+    [SerializeField] private TestTreeGen treeGenerator;
 
     [Header("Plant Layer")]
     [Tooltip("Wird bei Bedarf als Kind des Grid mit dem Namen Plants erstellt.")]
@@ -204,10 +205,26 @@ public class TestPlantGen : MonoBehaviour
 
     private bool IsTooCloseToTree(Vector3Int groundCell)
     {
-        if (treeTrunksTilemap == null || treeClearance <= 0)
+        if (treeClearance <= 0)
             return false;
 
         Vector3 worldPosition = groundTilemap.GetCellCenterWorld(groundCell);
+        if (treeGenerator == null)
+            treeGenerator = FindAnyObjectByType<TestTreeGen>();
+
+        if (treeGenerator != null)
+        {
+            float cellSize = Mathf.Max(
+                Mathf.Abs(groundTilemap.layoutGrid.cellSize.x),
+                Mathf.Abs(groundTilemap.layoutGrid.cellSize.y)
+            );
+            return treeGenerator.HasTreeNear(worldPosition, treeClearance * cellSize);
+        }
+
+        // Compatibility for scenes that still use the old trunk tilemap setup.
+        if (treeTrunksTilemap == null)
+            return false;
+
         Vector3Int treeCell = treeTrunksTilemap.WorldToCell(worldPosition);
 
         for (int x = -treeClearance; x <= treeClearance; x++)
