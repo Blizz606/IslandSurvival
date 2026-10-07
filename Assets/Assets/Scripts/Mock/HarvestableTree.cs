@@ -3,23 +3,41 @@ using UnityEngine;
 
 /// <summary>Owns the trunk, crown and stump parts of one tree prefab instance.</summary>
 [DisallowMultipleComponent]
-public sealed class HarvestableTree : MonoBehaviour
+public sealed class HarvestableTree : HarvestableResource
 {
+    [Header("Resource")]
+    [SerializeField] private ResourceDefinition resourceDefinition;
     [SerializeField] private Transform trunk;
     [SerializeField] private Transform crown;
     [SerializeField] private Transform stump;
 
     private int remainingHits;
+    private float respawnAt = -1f;
 
     public bool IsFelled { get; private set; }
-    public Vector2 InteractionPosition => trunk != null ? trunk.position : transform.position;
+    public override ResourceDefinition Definition => resourceDefinition;
+    public override Vector2 InteractionPosition => trunk != null ? trunk.position : transform.position;
+    public override bool IsDepleted => IsFelled;
+
+    private void Update()
+    {
+        if (!IsFelled || resourceDefinition == null || resourceDefinition.RespawnSeconds <= 0f
+            || Time.time < respawnAt)
+            return;
+
+        Restore();
+        ResourceHarvestEvents.RaiseRespawned(this);
+    }
 
     /// <summary>Keeps all visual settings from the prefab and only configures gameplay state.</summary>
     public void ConfigureFromPrefab(int hitsToFell, bool stumpBlocksPlayer)
     {
         ResolveParts();
-        remainingHits = Mathf.Max(1, hitsToFell);
+        remainingHits = resourceDefinition != null
+            ? resourceDefinition.HitsToDeplete
+            : Mathf.Max(1, hitsToFell);
         IsFelled = false;
+        respawnAt = -1f;
 
         if (trunk != null)
             trunk.gameObject.SetActive(true);
@@ -29,7 +47,11 @@ public sealed class HarvestableTree : MonoBehaviour
             stump.gameObject.SetActive(false);
 
         EnsurePolygonCollider(trunk, true);
-        EnsurePolygonCollider(stump, stumpBlocksPlayer);
+        EnsurePolygonCollider(
+            stump,
+            resourceDefinition != null ? resourceDefinition.BlocksPlayerAfterDepletion : stumpBlocksPlayer
+        );
+        RefreshRegistryPosition();
     }
 
     public void Configure(
@@ -50,7 +72,9 @@ public sealed class HarvestableTree : MonoBehaviour
         float crownFadeDistance
     )
     {
-        remainingHits = Mathf.Max(1, hitsToFell);
+        remainingHits = resourceDefinition != null
+            ? resourceDefinition.HitsToDeplete
+            : Mathf.Max(1, hitsToFell);
         trunk = CreateVisual("Trunk", trunkSprite, trunkOffset, treeScale, sortingLayer, trunkSortingOrder);
         crown = CreateVisual("Crown", crownSprite, Vector2.zero, treeScale, sortingLayer, crownSortingOrder);
         stump = CreateVisual(
@@ -64,21 +88,38 @@ public sealed class HarvestableTree : MonoBehaviour
 
         AlignStumpToTrunkBase(stumpOffset);
         EnsurePolygonCollider(trunk, true);
-        EnsurePolygonCollider(stump, stumpBlocksPlayer);
+        EnsurePolygonCollider(
+            stump,
+            resourceDefinition != null ? resourceDefinition.BlocksPlayerAfterDepletion : stumpBlocksPlayer
+        );
         ConfigureCrownFade(crown, sortingLayer, crownSortingOrder, crownOccludedAlpha, crownFadeSpeed, crownFadeDistance);
 
         if (stump != null)
             stump.gameObject.SetActive(false);
+
+        RefreshRegistryPosition();
     }
 
-    public void ApplyDamage(int damage)
+    public bool ApplyDamage(int damage)
     {
         if (IsFelled)
-            return;
+            return false;
 
-        remainingHits -= Mathf.Max(1, damage);
+        int appliedDamage = Mathf.Max(1, damage);
+        remainingHits -= appliedDamage;
+        ResourceHarvestEvents.RaiseHit(this, appliedDamage);
         if (remainingHits <= 0)
             Fell();
+
+        return true;
+    }
+
+    public override bool TryHarvest(ResourceToolType tool, int power)
+    {
+        if (resourceDefinition != null && !resourceDefinition.CanHarvestWith(tool))
+            return false;
+
+        return ApplyDamage(power);
     }
 
     public void SetPreview(bool enabled)
@@ -91,12 +132,30 @@ public sealed class HarvestableTree : MonoBehaviour
     private void Fell()
     {
         IsFelled = true;
+        if (resourceDefinition != null && resourceDefinition.RespawnSeconds > 0f)
+            respawnAt = Time.time + resourceDefinition.RespawnSeconds;
+
         if (trunk != null)
             trunk.gameObject.SetActive(false);
         if (crown != null)
             crown.gameObject.SetActive(false);
         if (stump != null)
             stump.gameObject.SetActive(true);
+
+        ResourceHarvestEvents.RaiseDepleted(this);
+    }
+
+    private void Restore()
+    {
+        IsFelled = false;
+        remainingHits = resourceDefinition.HitsToDeplete;
+        respawnAt = -1f;
+        if (trunk != null)
+            trunk.gameObject.SetActive(true);
+        if (crown != null)
+            crown.gameObject.SetActive(true);
+        if (stump != null)
+            stump.gameObject.SetActive(false);
     }
 
     private void ResolveParts()

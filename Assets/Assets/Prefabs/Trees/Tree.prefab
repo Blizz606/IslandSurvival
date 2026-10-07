@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f4505f801e76a43b6ccc893cf76c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HarvestableTree
+  resourceDefinition: {fileID: 11400000, guid: 2aa6cea675985454ba4017f4086d6552, type: 2}
   trunk: {fileID: 1190873159402543816}
   crown: {fileID: 1929899500743158315}
   stump: {fileID: 1075881074846925963}

@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(ResourceInventory))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Bewegung")]
@@ -28,15 +29,19 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Sicherheit: Bewegung wird wieder freigegeben, falls der Animator falsch verbunden ist.")]
     [SerializeField, Min(0.1f)] private float chopFailSafeDuration = 2f;
 
-    [Header("Baum-Fällziel")]
-    [Tooltip("Die Tilemap mit den Baumstämmen. Der Character richtet sich beim Fällen zum nächsten Stamm aus.")]
+    [Header("Ressourcen-Aktion")]
+    [Tooltip("Die Tilemap mit den Baumstämmen. Nur Rückwärtskompatibilität für alte Baum-Setups.")]
     [SerializeField] private Tilemap treeTrunksTilemap;
-    [Tooltip("Maximaler Abstand zum Stamm, in dem sich der Character beim Fällen automatisch ausrichtet.")]
+    [Tooltip("Maximaler Abstand zu einer Ressource, in dem sie abgebaut werden kann.")]
     [SerializeField, Min(0f)] private float treeChopRange = 1.25f;
-    [Tooltip("Erzeugt und verwaltet die fällbaren Bäume.")]
+    [Tooltip("Erzeugt und verwaltet die fällbaren Bäume. Nur Rückwärtskompatibilität.")]
     [SerializeField] private TestTreeGen treeGenerator;
+    [Tooltip("Werkzeug dieser Aktion. Neue Ressourcen können ein anderes Werkzeug verlangen.")]
+    [SerializeField] private ResourceToolType harvestTool = ResourceToolType.Axe;
     [Tooltip("Schaden pro Axtschlag.")]
     [SerializeField, Min(1)] private int axeDamage = 1;
+    [Tooltip("Erhält die Beute erst, wenn eine Ressource vollständig abgebaut wurde.")]
+    [SerializeField] private ResourceInventory resourceInventory;
 
     [Header("Kamera")]
     [SerializeField] private bool followCamera = true;
@@ -87,6 +92,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (treeGenerator == null)
             treeGenerator = FindAnyObjectByType<TestTreeGen>();
+
+        if (resourceInventory == null)
+            resourceInventory = GetComponent<ResourceInventory>();
 
         chopTriggerHash = Animator.StringToHash(chopTrigger);
         CacheAnimatorParameters();
@@ -186,6 +194,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void TryChopNearbyTree()
     {
+        if (ResourceRegistry.TryFindClosest(body.position, treeChopRange, harvestTool, out HarvestableResource resource))
+        {
+            bool wasDepleted = resource.IsDepleted;
+            if (resource.TryHarvest(harvestTool, axeDamage))
+            {
+                if (!wasDepleted && resource.IsDepleted)
+                    resourceInventory?.AddYields(resource.Definition);
+
+                return;
+            }
+        }
+
         if (treeGenerator == null)
             treeGenerator = FindAnyObjectByType<TestTreeGen>();
 
@@ -197,6 +217,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (treeChopRange <= 0f)
             return;
+
+        if (ResourceRegistry.TryFindClosest(body.position, treeChopRange, harvestTool, out HarvestableResource resource))
+        {
+            Vector2 resourceDirection = resource.InteractionPosition - body.position;
+            if (resourceDirection.sqrMagnitude > 0.0001f)
+            {
+                facingDirection = GetCardinalDirection(resourceDirection);
+                UpdateAnimator();
+                return;
+            }
+        }
 
         if (treeGenerator == null)
             treeGenerator = FindAnyObjectByType<TestTreeGen>();
