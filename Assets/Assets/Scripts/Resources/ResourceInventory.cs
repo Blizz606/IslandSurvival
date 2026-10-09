@@ -27,6 +27,8 @@ public sealed class ResourceInventory : MonoBehaviour
 
     public event Action<string, int> Changed;
 
+    public IReadOnlyList<ResourceInventoryEntry> Entries => entries;
+
     public int GetAmount(string itemId)
     {
         if (string.IsNullOrWhiteSpace(itemId))
