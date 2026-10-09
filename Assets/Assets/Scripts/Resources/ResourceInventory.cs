@@ -18,12 +18,12 @@ public struct ResourceInventoryEntry
     }
 }
 
-/// <summary>Runtime inventory for gathered resource yields. It keeps stable item IDs,
-/// so UI, crafting and save systems can all use the same data later.</summary>
 [DisallowMultipleComponent]
 public sealed class ResourceInventory : MonoBehaviour
 {
     [SerializeField] private List<ResourceInventoryEntry> entries = new();
+
+    [SerializeField, Min(1)] private int maxStackSize = 99;
 
     public event Action<string, int> Changed;
 
@@ -57,6 +57,7 @@ public sealed class ResourceInventory : MonoBehaviour
                 yield.MinimumAmount,
                 yield.MaximumAmount + 1
             );
+
             Add(yield.ItemId, amount);
         }
     }
@@ -69,16 +70,20 @@ public sealed class ResourceInventory : MonoBehaviour
         for (int index = 0; index < entries.Count; index++)
         {
             ResourceInventoryEntry entry = entries[index];
+
             if (entry.ItemId != itemId)
                 continue;
 
-            int newAmount = entry.Amount + amount;
+            int newAmount = Mathf.Min(entry.Amount + amount, maxStackSize);
+
             entries[index] = new ResourceInventoryEntry(itemId, newAmount);
             Changed?.Invoke(itemId, newAmount);
             return;
         }
 
-        entries.Add(new ResourceInventoryEntry(itemId, amount));
-        Changed?.Invoke(itemId, amount);
+        int firstAmount = Mathf.Min(amount, maxStackSize);
+
+        entries.Add(new ResourceInventoryEntry(itemId, firstAmount));
+        Changed?.Invoke(itemId, firstAmount);
     }
 }
