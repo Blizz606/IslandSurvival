@@ -136,6 +136,9 @@ public sealed class DevConsole : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             return "Szene wird neu geladen.";
         });
+        
+        RegisterCommand(
+            "give", "Gibt Ressourcen: give <wood|stone> <menge>", GiveResources);
     }
 
     private void BuildUi()
@@ -278,6 +281,30 @@ public sealed class DevConsole : MonoBehaviour
     {
         PlayerMovement movement = FindAnyObjectByType<PlayerMovement>();
         return movement != null ? movement.transform : GameObject.Find("Player")?.transform;
+    }
+
+    private static string GiveResources(string[] args)
+    {
+        if (args.Length != 2)
+            return "Nutzung: give <material> <amount>";
+        
+        string itemId = args[0].ToLowerInvariant();
+        
+        if (itemId != "wood" && itemId != "stone")
+            return "Unbekannter Befehl: " + itemId;
+
+        if (!int.TryParse(args[1], out int amount) || amount <= 0)
+            return "Number higher than zero required";
+        
+        ResourceInventory inventory = 
+            UnityEngine.Object.FindAnyObjectByType<ResourceInventory>();
+
+        if (inventory == null)
+            return "Kein Inventar gefunden";
+        
+        inventory.Add(itemId, amount);
+
+        return $"+{amount} {itemId} erhalten";
     }
 
     private void WriteLine(string line)
