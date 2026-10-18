@@ -324,6 +324,25 @@ public class TestTreeGen : MonoBehaviour
         return false;
     }
 
+    /// <summary>Returns the world-space distance to the closest generated tree.</summary>
+    public float GetNearestTreeDistance(Vector2 worldPosition)
+    {
+        float nearestDistanceSqr = float.MaxValue;
+        foreach (HarvestableTree tree in FindSpawnedTrees())
+        {
+            if (tree == null)
+                continue;
+
+            float distanceSqr = ((Vector2)tree.transform.position - worldPosition).sqrMagnitude;
+            if (distanceSqr < nearestDistanceSqr)
+                nearestDistanceSqr = distanceSqr;
+        }
+
+        return nearestDistanceSqr == float.MaxValue
+            ? float.PositiveInfinity
+            : Mathf.Sqrt(nearestDistanceSqr);
+    }
+
     private IEnumerable<HarvestableTree> FindSpawnedTrees()
     {
         if (spawnedTrees.Count > 0)

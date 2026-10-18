@@ -21,6 +21,13 @@ public class IslandGenerator : MonoBehaviour
         TopLeft
     }
 
+    [Header("Start Campfire")]
+    [SerializeField] private Tilemap placedObjectsTilemap;
+    [SerializeField] private TileBase campfireTile;
+    [SerializeField, Min(1)] private int campfireDistanceFromPlayer = 2;
+    [SerializeField, Min(0f)] private float minimumCampfireTreeDistance = 4f;
+    [SerializeField, Min(0f)] private float maximumCampfireTreeDistance = 5f;
+    
     [Header("Tilemap")]
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private TestTreeGen treeGenerator;
@@ -79,6 +86,10 @@ public class IslandGenerator : MonoBehaviour
     private bool[,] land;
 
     private bool isGenerating;
+    private Vector3Int spawnedCampfireCell;
+    private bool hasSpawnedCampfire;
+    private Vector3 queuedSpawnPosition;
+    private bool finishSpawnAreaQueued;
 
     private void OnValidate()
     {
@@ -194,11 +205,87 @@ public class IslandGenerator : MonoBehaviour
         if (playerBody != null)
             playerBody.position = spawnPosition;
 
+        queuedSpawnPosition = spawnPosition;
+        finishSpawnAreaQueued = true;
+    }
+
+    private void LateUpdate()
+    {
+        if (!finishSpawnAreaQueued)
+            return;
+
+        finishSpawnAreaQueued = false;
+
         if (treeGenerator != null)
-            treeGenerator.ClearTreesNear(spawnPosition, spawnClearance);
+            treeGenerator.ClearTreesNear(queuedSpawnPosition, spawnClearance);
 
         if (plantGenerator != null)
-            plantGenerator.ClearPlantsNear(spawnPosition, spawnClearance);
+            plantGenerator.ClearPlantsNear(queuedSpawnPosition, spawnClearance);
+
+        PlaceStartingCampfire(queuedSpawnPosition);
+    }
+
+    private void PlaceStartingCampfire(Vector3 spawnPosition)
+    {
+        if (placedObjectsTilemap == null || campfireTile == null)
+            return;
+
+        if (hasSpawnedCampfire && placedObjectsTilemap.GetTile(spawnedCampfireCell) == campfireTile)
+            placedObjectsTilemap.SetTile(spawnedCampfireCell, null);
+
+        if (!TryFindCampfireCell(spawnPosition, out Vector3Int campfireCell))
+        {
+            // The world can still start even if a custom world has no tree in the
+            // requested range. Normal generated worlds always find a valid cell.
+            campfireCell = placedObjectsTilemap.WorldToCell(spawnPosition);
+            campfireCell += Vector3Int.right * campfireDistanceFromPlayer;
+            Debug.LogWarning("IslandGenerator: No campfire cell with a 4-5 tile tree distance was found. Using the safe spawn fallback.", this);
+        }
+
+        placedObjectsTilemap.SetTile(campfireCell, campfireTile);
+        spawnedCampfireCell = campfireCell;
+        hasSpawnedCampfire = true;
+    }
+
+    private bool TryFindCampfireCell(Vector3 spawnPosition, out Vector3Int campfireCell)
+    {
+        campfireCell = Vector3Int.zero;
+        if (treeGenerator == null || tilemap == null)
+            return false;
+
+        float cellSize = Mathf.Max(
+            Mathf.Abs(tilemap.layoutGrid.cellSize.x),
+            Mathf.Abs(tilemap.layoutGrid.cellSize.y)
+        );
+        float minimumDistance = minimumCampfireTreeDistance * cellSize;
+        float maximumDistance = Mathf.Max(minimumDistance, maximumCampfireTreeDistance * cellSize);
+        float idealDistance = (minimumDistance + maximumDistance) * 0.5f;
+        float bestScore = float.MaxValue;
+
+        foreach (Vector3Int groundCell in tilemap.cellBounds.allPositionsWithin)
+        {
+            if (!tilemap.HasTile(groundCell))
+                continue;
+
+            Vector3 worldPosition = tilemap.GetCellCenterWorld(groundCell);
+            Vector3Int candidateCell = placedObjectsTilemap.WorldToCell(worldPosition);
+            if (placedObjectsTilemap.HasTile(candidateCell))
+                continue;
+
+            float nearestTreeDistance = treeGenerator.GetNearestTreeDistance(worldPosition);
+            if (nearestTreeDistance < minimumDistance || nearestTreeDistance > maximumDistance)
+                continue;
+
+            float score = Mathf.Abs(nearestTreeDistance - idealDistance) * 1000f
+                + ((Vector2)worldPosition - (Vector2)spawnPosition).sqrMagnitude;
+            if (score >= bestScore)
+                continue;
+
+            bestScore = score;
+            campfireCell = candidateCell;
+        }
+
+        return bestScore < float.MaxValue;
     }
 
     private bool TryFindSpawnCell(out Vector3Int spawnCell)
@@ -711,4 +798,4 @@ public class IslandGenerator : MonoBehaviour
 
         return land[x, y];
     }
-}
+}   
