@@ -17,7 +17,7 @@ MonoBehaviour:
   category: 0
   requiredTool: 2
   hitsToDeplete: 4
-  respawnSeconds: 0
+  respawnSeconds: 300
   blocksPlayerAfterDepletion: 1
   yields:
   - itemId: wood

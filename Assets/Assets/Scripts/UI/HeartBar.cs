@@ -24,7 +24,8 @@ public sealed class HeartBar : MonoBehaviour
     [SerializeField] private Sprite fullHeartDamageSprite;
     [Tooltip("One UI Image used to display the selected damage sprite.")]
     [SerializeField] private Image damageImage;
-    [SerializeField, Min(0.01f)] private float damageSpriteDuration = 0.1f;
+    [SerializeField, Min(1)] private int damageFlashCount = 3;
+    [SerializeField, Min(0.01f)] private float damageFlashDuration = 0.1f;
 
     private Coroutine damageSpriteRoutine;
 
@@ -41,7 +42,7 @@ public sealed class HeartBar : MonoBehaviour
         maxHealth = Mathf.Max(1, maxHealth);
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         if (damageImage != null)
-            damageImage.gameObject.SetActive(false);
+            damageImage.enabled = false;
         UpdateHearts();
     }
 
@@ -51,9 +52,13 @@ public sealed class HeartBar : MonoBehaviour
         if (amount <= 0)
             return;
 
+        int targetHeartIndex = GetDamageHeartIndex();
         currentHealth = Mathf.Max(0, currentHealth - amount);
         UpdateHearts();
-        ShowDamageSprite(amount >= 2 ? fullHeartDamageSprite : halfHeartDamageSprite);
+        ShowDamageSprite(
+            amount >= 2 ? fullHeartDamageSprite : halfHeartDamageSprite,
+            targetHeartIndex
+        );
     }
 
     /// <summary>Adds health in half-heart units.</summary>
@@ -97,7 +102,7 @@ public sealed class HeartBar : MonoBehaviour
         }
     }
 
-    private void ShowDamageSprite(Sprite damageSprite)
+    private void ShowDamageSprite(Sprite damageSprite, int targetHeartIndex)
     {
         if (damageSprite == null || damageImage == null)
             return;
@@ -105,15 +110,54 @@ public sealed class HeartBar : MonoBehaviour
         if (damageSpriteRoutine != null)
             StopCoroutine(damageSpriteRoutine);
 
-        damageSpriteRoutine = StartCoroutine(ShowDamageSpriteForDelay(damageSprite));
+        damageSpriteRoutine = StartCoroutine(ShowDamageSpriteForDelay(damageSprite, targetHeartIndex));
     }
 
-    private IEnumerator ShowDamageSpriteForDelay(Sprite damageSprite)
+    private IEnumerator ShowDamageSpriteForDelay(Sprite damageSprite, int targetHeartIndex)
     {
+        PositionDamageImage(targetHeartIndex);
         damageImage.sprite = damageSprite;
-        damageImage.gameObject.SetActive(true);
-        yield return new WaitForSecondsRealtime(damageSpriteDuration);
-        damageImage.gameObject.SetActive(false);
+
+        int flashes = Mathf.Max(1, damageFlashCount);
+        float duration = Mathf.Max(0.01f, damageFlashDuration);
+        for (int flash = 0; flash < flashes; flash++)
+        {
+            damageImage.enabled = true;
+            yield return new WaitForSecondsRealtime(duration);
+            damageImage.enabled = false;
+
+            if (flash < flashes - 1)
+                yield return new WaitForSecondsRealtime(duration);
+        }
+
         damageSpriteRoutine = null;
+    }
+
+    private int GetDamageHeartIndex()
+    {
+        if (hearts == null || hearts.Length == 0 || currentHealth <= 0)
+            return 0;
+
+        return Mathf.Clamp((currentHealth - 1) / 2, 0, hearts.Length - 1);
+    }
+
+    private void PositionDamageImage(int targetHeartIndex)
+    {
+        if (hearts == null || targetHeartIndex < 0 || targetHeartIndex >= hearts.Length)
+            return;
+
+        Image targetHeart = hearts[targetHeartIndex];
+        if (targetHeart == null)
+            return;
+
+        RectTransform targetRect = targetHeart.rectTransform;
+        RectTransform damageRect = damageImage.rectTransform;
+        damageRect.anchorMin = targetRect.anchorMin;
+        damageRect.anchorMax = targetRect.anchorMax;
+        damageRect.pivot = targetRect.pivot;
+        damageRect.anchoredPosition = targetRect.anchoredPosition;
+        damageRect.sizeDelta = targetRect.sizeDelta;
+        damageRect.localScale = targetRect.localScale;
+        damageRect.SetAsLastSibling();
     }
 }
