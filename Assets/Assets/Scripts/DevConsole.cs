@@ -139,6 +139,9 @@ public sealed class DevConsole : MonoBehaviour
         
         RegisterCommand(
             "give", "Gibt Ressourcen: give <wood|stone> <menge>", GiveResources);
+
+        RegisterCommand(
+            "life", "Leben ändern: life <give|remove> <halbe Herzen>", ChangeLife);
     }
 
     private void BuildUi()
@@ -305,6 +308,34 @@ public sealed class DevConsole : MonoBehaviour
         inventory.Add(itemId, amount);
 
         return $"+{amount} {itemId} erhalten";
+    }
+
+    private static string ChangeLife(string[] args)
+    {
+        if (args.Length != 2)
+            return "Nutzung: life <give|remove> <halbe Herzen>";
+
+        if (!int.TryParse(args[1], out int amount) || amount <= 0)
+            return "Die Anzahl muss größer als 0 sein.";
+
+        HeartBar heartBar = UnityEngine.Object.FindAnyObjectByType<HeartBar>();
+        if (heartBar == null)
+            return "Kein HeartBar gefunden.";
+
+        string action = args[0].ToLowerInvariant();
+        if (action == "give" || action == "add" || action == "heal")
+        {
+            heartBar.Heal(amount);
+            return $"+{amount} halbe Herzen. Leben: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
+        }
+
+        if (action == "remove" || action == "damage" || action == "take")
+        {
+            heartBar.TakeDamage(amount);
+            return $"-{amount} halbe Herzen. Leben: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
+        }
+
+        return "Nutzung: life <give|remove> <halbe Herzen>";
     }
 
     private void WriteLine(string line)
