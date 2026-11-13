@@ -76,7 +76,21 @@ public class TestBeachGenEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        DrawDefaultInspector();
+        serializedObject.Update();
+        using (new EditorGUI.DisabledScope(true))
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Script"));
+
+        // Show only the rotated-tile settings used by this compatibility component.
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("generatorEnabled"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("grassTilemap"), new GUIContent("Ground Tilemap"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sandTilemap"), new GUIContent("Beach Tilemap"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("sandTile"), new GUIContent("Beach Tile"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("beachWidth"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("beachSortingOrder"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("edgeTile"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("outerCornerTile"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("innerCornerTile"));
+        serializedObject.ApplyModifiedProperties();
 
         EditorGUILayout.Space(8f);
         TestBeachGen generator = (TestBeachGen)target;

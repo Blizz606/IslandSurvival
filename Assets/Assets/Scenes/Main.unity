@@ -280,33 +280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3028053}
   m_CullTransparentMesh: 1
---- !u!114 &17765912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 1.5801659
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &23120565
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,33 +968,6 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
---- !u!114 &85947053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 0.6511315
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &138017499
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1256,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201575188}
   m_CullTransparentMesh: 1
---- !u!114 &209988223
+--- !u!114 &212411798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1323,17 +1269,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
   m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 2.7876868
+  m_AnimationStartTime: 6.475959
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -1476,7 +1422,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225090099}
   m_CullTransparentMesh: 1
---- !u!114 &238609687
+--- !u!114 &230905713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1499,7 +1445,88 @@ MonoBehaviour:
   - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 3.8246439
+  m_AnimationStartTime: 2.8410158
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
+--- !u!114 &240863856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0.16258802
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
+--- !u!114 &248752963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0.3865826
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
+--- !u!114 &250408658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 2.3117688
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -1663,7 +1690,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252152039}
   m_CullTransparentMesh: 1
---- !u!114 &277249973
+--- !u!114 &270694206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0.3648648
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
+--- !u!114 &279412268
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1686,7 +1740,7 @@ MonoBehaviour:
   - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 0.58991855
+  m_AnimationStartTime: 3.473322
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -1813,6 +1867,33 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
+--- !u!114 &323459532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0.58991855
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!114 &324833208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,60 +2212,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &405772843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 1.6325965
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &410155587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 5.170931
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &434514667
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,6 +2469,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455765704}
   m_CullTransparentMesh: 1
+--- !u!114 &465998765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.3777351
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &476436392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2602,6 +2656,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476436392}
   m_CullTransparentMesh: 1
+--- !u!114 &553788500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 2.8302753
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &555600862
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,6 +2820,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555600862}
   m_CullTransparentMesh: 1
+--- !u!114 &556212017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.6325965
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &617637086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,6 +3394,33 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
+--- !u!114 &716451291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.5801659
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &734106229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3799,7 @@ MonoBehaviour:
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
---- !u!114 &769673394
+--- !u!114 &766196709
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3677,17 +3812,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
   m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 1.5035033
+  m_AnimationStartTime: 3.283931
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -5579,7 +5714,7 @@ Transform:
   - {fileID: 1661711336}
   m_Father: {fileID: 1979697064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1001362413
+--- !u!114 &1052302469
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5602,34 +5737,7 @@ MonoBehaviour:
   - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 4.227949
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &1047030287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 1.3777351
+  m_AnimationStartTime: 2.7876868
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -5736,60 +5844,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1055532806}
   m_CullTransparentMesh: 1
---- !u!114 &1056684736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 1.2715123
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &1069308787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 0.16258802
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &1073545606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5992,33 +6046,6 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
---- !u!114 &1114242390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 6.6903234
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &1117156175
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,6 +6183,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117156175}
   m_CullTransparentMesh: 1
+--- !u!114 &1118912618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 4.551779
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1129378631
 GameObject:
   m_ObjectHideFlags: 0
@@ -50254,6 +50308,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1161585303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 3.8246439
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1166055715
 GameObject:
   m_ObjectHideFlags: 0
@@ -50964,33 +51045,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199428593}
   m_CullTransparentMesh: 1
---- !u!114 &1199678877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 4.8372407
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &1203592777
 GameObject:
   m_ObjectHideFlags: 0
@@ -51265,6 +51319,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208395800}
   m_CullTransparentMesh: 1
+--- !u!114 &1232918457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 5.170931
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1247180611
 GameObject:
   m_ObjectHideFlags: 0
@@ -52468,88 +52549,88 @@ Tilemap:
   m_TileAssetArray:
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1773682355}
+    m_Data: {fileID: 250408658}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1645469904}
+    m_Data: {fileID: 553788500}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 2124501848}
+    m_Data: {fileID: 1434601746}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1370170375}
+    m_Data: {fileID: 1869757659}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 410155587}
+    m_Data: {fileID: 1232918457}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 2067591774}
+    m_Data: {fileID: 766196709}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 769673394}
+    m_Data: {fileID: 1780091397}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 238609687}
+    m_Data: {fileID: 1161585303}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1056684736}
+    m_Data: {fileID: 1445352099}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1524731253}
+    m_Data: {fileID: 1331757801}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 277249973}
+    m_Data: {fileID: 323459532}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1701487411}
+    m_Data: {fileID: 248752963}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 405772843}
+    m_Data: {fileID: 556212017}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1199678877}
+    m_Data: {fileID: 1684472766}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1674758514}
+    m_Data: {fileID: 1327121007}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1047030287}
+    m_Data: {fileID: 465998765}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1967478416}
+    m_Data: {fileID: 212411798}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 2026608530}
+    m_Data: {fileID: 279412268}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1069308787}
+    m_Data: {fileID: 240863856}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1627737187}
+    m_Data: {fileID: 230905713}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1114242390}
+    m_Data: {fileID: 1401545573}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1001362413}
+    m_Data: {fileID: 1482217280}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 1375837388}
+    m_Data: {fileID: 270694206}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 2138801806}
+    m_Data: {fileID: 1753662047}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 17765912}
+    m_Data: {fileID: 716451291}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 2131942051}
+    m_Data: {fileID: 1118912618}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 209988223}
+    m_Data: {fileID: 1052302469}
   - serializedVersion: 2
     m_RefCount: 1
-    m_Data: {fileID: 85947053}
+    m_Data: {fileID: 1344424536}
   m_TileSpriteArray:
   - serializedVersion: 2
     m_RefCount: 13
@@ -52624,6 +52705,60 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1327121007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0.5599776
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
+--- !u!114 &1331757801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.1015532
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1335311933
 GameObject:
   m_ObjectHideFlags: 0
@@ -52922,7 +53057,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337098152}
   m_CullTransparentMesh: 1
---- !u!114 &1370170375
+--- !u!114 &1344424536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -52945,34 +53080,7 @@ MonoBehaviour:
   - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 1.5503639
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &1375837388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 0.3648648
+  m_AnimationStartTime: 0.6511315
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -73896,6 +74004,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393005134}
   m_CullTransparentMesh: 1
+--- !u!114 &1401545573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 6.6903234
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1413102766
 GameObject:
   m_ObjectHideFlags: 0
@@ -74294,6 +74429,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1434601746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 5.5926113
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1437427456
 GameObject:
   m_ObjectHideFlags: 0
@@ -74393,6 +74555,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437427456}
   m_CullTransparentMesh: 1
+--- !u!114 &1445352099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.2715123
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1471808955
 GameObject:
   m_ObjectHideFlags: 0
@@ -74553,6 +74742,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471808955}
   m_CullTransparentMesh: 1
+--- !u!114 &1482217280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 4.227949
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1486967620
 GameObject:
   m_ObjectHideFlags: 0
@@ -75053,33 +75269,6 @@ MonoBehaviour:
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 14.70936
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &1524731253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 1.1015532
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -75595,33 +75784,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575289719}
   m_CullTransparentMesh: 1
---- !u!114 &1627737187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 2.8410158
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!114 &1629213922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92367,33 +92529,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1645469904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 2.8302753
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!114 &1656994589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92782,33 +92917,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1662125798}
   m_CullTransparentMesh: 1
---- !u!114 &1674758514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 0.5599776
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &1682565477
 GameObject:
   m_ObjectHideFlags: 0
@@ -92872,6 +92980,33 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1684472766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 4.8372407
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!114 &1697407520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92904,33 +93039,6 @@ MonoBehaviour:
   m_MinSpeed: 1
   m_MaxSpeed: 1
   m_AnimationStartTime: 0.16705106
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &1701487411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 0.3865826
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -93345,6 +93453,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743823424}
   m_CullTransparentMesh: 1
+--- !u!114 &1753662047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 7.205641
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!114 &1754513389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93380,7 +93515,7 @@ MonoBehaviour:
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
---- !u!114 &1773682355
+--- !u!114 &1780091397
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93403,7 +93538,7 @@ MonoBehaviour:
   - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
   m_MinSpeed: 1
   m_MaxSpeed: 1
-  m_AnimationStartTime: 2.3117688
+  m_AnimationStartTime: 1.5035033
   m_AnimationStartFrame: 0
   m_TileColliderType: 0
   m_TileAnimationFlags: 0
@@ -93619,6 +93754,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827849347}
   m_CullTransparentMesh: 1
+--- !u!114 &1869757659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 1.5503639
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
 --- !u!1 &1882210166
 GameObject:
   m_ObjectHideFlags: 0
@@ -94030,33 +94192,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939219641}
   m_CullTransparentMesh: 1
---- !u!114 &1967478416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 6.475959
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &1979697063
 GameObject:
   m_ObjectHideFlags: 0
@@ -94071,6 +94206,7 @@ GameObject:
   - component: {fileID: 1979697067}
   - component: {fileID: 1979697068}
   - component: {fileID: 1979697069}
+  - component: {fileID: 1979697070}
   m_Layer: 0
   m_Name: Generator
   m_TagString: Untagged
@@ -94096,7 +94232,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1979697065
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -94134,7 +94270,7 @@ MonoBehaviour:
   seed: -57937
 --- !u!114 &1979697066
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -94176,7 +94312,7 @@ MonoBehaviour:
   forestRadius: 25
 --- !u!114 &1979697067
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -94186,17 +94322,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f8fc1b9b0c1f4b9743abdc834cfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestBeachGen
-  groundTilemap: {fileID: 1635753964}
-  beachTilemap: {fileID: 1380792154}
-  beachTile: {fileID: 11400000, guid: 6123d3129825db34f8823e21d59696cd, type: 2}
+  generatorEnabled: 1
+  grassTilemap: {fileID: 1635753964}
+  grassOverlayTilemap: {fileID: 0}
+  sandTilemap: {fileID: 1380792154}
+  sandTransitionTilemap: {fileID: 0}
+  waterTilemap: {fileID: 0}
+  sandTile: {fileID: 11400000, guid: 6123d3129825db34f8823e21d59696cd, type: 2}
   beachWidth: 1
+  sandVariant1: {fileID: 0}
+  sandVariant2: {fileID: 0}
+  sandVariant3: {fileID: 0}
+  variant1Chance: 0.02
+  variant2Chance: 0.01
+  variant3Chance: 0.005
+  waterTile: {fileID: 0}
+  waterBorder: 15
+  edgeTop: {fileID: 0}
+  edgeBottom: {fileID: 0}
+  edgeLeft: {fileID: 0}
+  edgeRight: {fileID: 0}
+  outerTopLeft: {fileID: 0}
+  outerTopRight: {fileID: 0}
+  outerBottomLeft: {fileID: 0}
+  outerBottomRight: {fileID: 0}
+  innerTopLeft: {fileID: 0}
+  innerTopRight: {fileID: 0}
+  innerBottomLeft: {fileID: 0}
+  innerBottomRight: {fileID: 0}
   beachSortingOrder: -10
   edgeTile: {fileID: 11400000, guid: 87327071efc10174ca9ed3c543ca0bc2, type: 2}
   outerCornerTile: {fileID: 11400000, guid: d6cf9aeebcf550546a190890d6938cd8, type: 2}
   innerCornerTile: {fileID: 11400000, guid: b71fe7354ba02d74a9d788aedb45abf4, type: 2}
 --- !u!114 &1979697068
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -94223,7 +94383,7 @@ MonoBehaviour:
   fishSeed: 324084601
 --- !u!114 &1979697069
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -94249,6 +94409,19 @@ MonoBehaviour:
   beachClearance: 2
   treeClearance: 2
   seed: -1387344669
+--- !u!114 &1979697070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979697063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c982dc996cd34b57b392087ab37afae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UltimateWorldGenerator
+  showIndividualComponents: 0
 --- !u!1 &1984439733
 GameObject:
   m_ObjectHideFlags: 0
@@ -94753,33 +94926,6 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
---- !u!114 &2026608530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 3.473322
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &2026705764
 GameObject:
   m_ObjectHideFlags: 0
@@ -95093,33 +95239,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061008128}
   m_CullTransparentMesh: 1
---- !u!114 &2067591774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 3.283931
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1001 &2103634862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95243,33 +95362,6 @@ PolygonCollider2D:
       - {x: -0.4375, y: 0.125}
       - {x: 0.4375, y: 0.125}
   m_UseDelaunayMesh: 1
---- !u!114 &2124501848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 5.5926113
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &2130123210
 GameObject:
   m_ObjectHideFlags: 0
@@ -95430,60 +95522,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130123210}
   m_CullTransparentMesh: 1
---- !u!114 &2131942051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 7600899803865594896, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -8313015192126985206, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -706291252008792002, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 510739368915495217, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 1145202934317799704, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4039971379984468988, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: -5965837611772873411, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  - {fileID: 4566842813617042314, guid: 8384bb13e5c6d8a45bf06590aca3e295, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 4.551779
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
---- !u!114 &2138801806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
-  m_AnimatedSprites:
-  - {fileID: 8379804020761866693, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7149310177382891374, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 4477070585111689981, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -5121056759104277875, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 6538710684944359716, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: -4927516654462684280, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 7820294591389999573, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  - {fileID: 194197525524851116, guid: b3251175ce8fe3f42944096fbf940a37, type: 3}
-  m_MinSpeed: 1
-  m_MaxSpeed: 1
-  m_AnimationStartTime: 7.205641
-  m_AnimationStartFrame: 0
-  m_TileColliderType: 0
-  m_TileAnimationFlags: 0
 --- !u!1 &2140403085
 GameObject:
   m_ObjectHideFlags: 0
