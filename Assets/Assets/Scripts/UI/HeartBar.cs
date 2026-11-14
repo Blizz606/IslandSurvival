@@ -71,6 +71,24 @@ public sealed class HeartBar : MonoBehaviour
         UpdateHearts();
     }
 
+    /// <summary>Adds complete hearts. AddHearts(1) adds one full heart.</summary>
+    public void AddHearts(int amount = 1)
+    {
+        if (amount <= 0)
+            return;
+
+        Heal(amount * 2);
+    }
+
+    /// <summary>Removes complete hearts. RemoveHearts(1) removes one full heart.</summary>
+    public void RemoveHearts(int amount = 1)
+    {
+        if (amount <= 0)
+            return;
+
+        TakeDamage(amount * 2);
+    }
+
     public void ResetHealth()
     {
         currentHealth = maxHealth;
