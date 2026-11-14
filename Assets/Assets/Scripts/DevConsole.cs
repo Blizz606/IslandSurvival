@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
-/// A small in-game console for testing. Toggle it with Ctrl + Shift + C.
+/// A small in-game console. Toggle it with F10 or Ctrl + Shift + C.
 /// Other systems can add commands via DevConsole.RegisterCommand(...).
 /// </summary>
 [DefaultExecutionOrder(-1000)]
@@ -73,11 +73,13 @@ public sealed class DevConsole : MonoBehaviour
 
         instance = this;
 
+#if !UNITY_WEBGL || UNITY_EDITOR
         if (!enableInReleaseBuilds && !Application.isEditor && !Debug.isDebugBuild)
         {
             Destroy(gameObject);
             return;
         }
+#endif
 
         RegisterBuiltInCommands();
         BuildUi();

@@ -4,6 +4,12 @@
 
 Island Survival is a work-in-progress, top-down pixel-art survival game made with Unity. Explore an island, prepare during the day, and defend yourself against zombies after dark. Each night brings a tougher challenge.
 
+## Screenshots
+
+![Gameplay showing the player exploring the island](docs/images/gameplay.png)
+
+![Island Survival start screen and tutorial](docs/images/start-screen.png)
+
 ## How to play
 
 1. **Gather supplies.** Chop trees for wood and walk over stones to collect them.
