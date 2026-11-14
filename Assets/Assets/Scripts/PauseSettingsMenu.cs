@@ -41,7 +41,6 @@ public sealed class PauseSettingsMenu : MonoBehaviour
 
     private readonly int[] frameRateOptions = { 30, 60, 120, -1 };
 
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void CreateMenu()
     {
         if (instance != null)
@@ -79,7 +78,7 @@ public sealed class PauseSettingsMenu : MonoBehaviour
     private void Update()
     {
         Keyboard keyboard = Keyboard.current;
-        if (keyboard == null || !keyboard.escapeKey.wasPressedThisFrame)
+        if (keyboard == null || GameOverScreen.IsGameOver || SurvivalIntro.IsOpen || !keyboard.escapeKey.wasPressedThisFrame)
             return;
 
         // Escape closes the development console first, not the game menu.
@@ -94,7 +93,7 @@ public sealed class PauseSettingsMenu : MonoBehaviour
 
     public void Open()
     {
-        if (root == null || root.activeSelf)
+        if (GameOverScreen.IsGameOver || root == null || root.activeSelf)
             return;
 
         timeScaleBeforePause = Time.timeScale > 0f ? Time.timeScale : 1f;

@@ -86,4 +86,31 @@ public sealed class ResourceInventory : MonoBehaviour
         entries.Add(new ResourceInventoryEntry(itemId, firstAmount));
         Changed?.Invoke(itemId, firstAmount);
     }
+
+    /// <summary>Adds the entire amount only if it fits in the existing stack.</summary>
+    public bool TryAdd(string itemId, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(itemId) || amount <= 0 || amount > maxStackSize - GetAmount(itemId))
+            return false;
+        Add(itemId, amount);
+        return true;
+    }
+
+    /// <summary>Atomically consumes items when enough are available.</summary>
+    public bool TryRemove(string itemId, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(itemId) || amount <= 0) return false;
+        for (int i = 0; i < entries.Count; i++)
+        {
+            ResourceInventoryEntry entry = entries[i];
+            if (entry.ItemId != itemId) continue;
+            if (entry.Amount < amount) return false;
+            int remaining = entry.Amount - amount;
+            if (remaining == 0) entries.RemoveAt(i);
+            else entries[i] = new ResourceInventoryEntry(itemId, remaining);
+            Changed?.Invoke(itemId, remaining);
+            return true;
+        }
+        return false;
+    }
 }

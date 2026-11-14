@@ -1,0 +1,74 @@
+{
+  "image": "survivor_tyler.png",
+  "frame_width": 16,
+  "frame_height": 16,
+  "columns": 4,
+  "walk_frame_order": "step-left, idle, step-right (play 0-1-2-1)",
+  "fps": {
+    "walk": 6,
+    "idle": 2,
+    "shoot": 10,
+    "attack": 8,
+    "hurt": 1,
+    "death": 6
+  },
+  "animations": {
+    "walk_down": {
+      "row": 0,
+      "frames": 3
+    },
+    "walk_left": {
+      "row": 1,
+      "frames": 3
+    },
+    "walk_right": {
+      "row": 2,
+      "frames": 3
+    },
+    "walk_up": {
+      "row": 3,
+      "frames": 3
+    },
+    "idle_down": {
+      "row": 4,
+      "frames": 2
+    },
+    "idle_left": {
+      "row": 5,
+      "frames": 2
+    },
+    "idle_right": {
+      "row": 6,
+      "frames": 2
+    },
+    "idle_up": {
+      "row": 7,
+      "frames": 2
+    },
+    "shoot_down": {
+      "row": 8,
+      "frames": 2
+    },
+    "shoot_left": {
+      "row": 9,
+      "frames": 2
+    },
+    "shoot_right": {
+      "row": 10,
+      "frames": 2
+    },
+    "shoot_up": {
+      "row": 11,
+      "frames": 2
+    },
+    "hurt": {
+      "row": 12,
+      "frames": 4,
+      "note": "one frame per direction: down, left, right, up"
+    },
+    "death": {
+      "row": 13,
+      "frames": 4
+    }
+  }
+}

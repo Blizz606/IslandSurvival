@@ -29,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Sicherheit: Bewegung wird wieder freigegeben, falls der Animator falsch verbunden ist.")]
     [SerializeField, Min(0.1f)] private float chopFailSafeDuration = 2f;
 
+    [Header("Schwert")]
+    [SerializeField] private Key swordKey = Key.F;
+    [SerializeField, Min(0.1f)] private float swordFailSafeDuration = 2f;
+    [SerializeField, Min(0f)] private float swordRange = 1.25f;
+    [SerializeField, Min(1)] private int swordDamage = 1;
+    [SerializeField, Range(0f, 1f)] private float swordHitTime = 0.3f;
+
     [Header("Ressourcen-Aktion")]
     [Tooltip("Die Tilemap mit den Baumstämmen. Nur Rückwärtskompatibilität für alte Baum-Setups.")]
     [SerializeField] private Tilemap treeTrunksTilemap;
@@ -77,6 +84,12 @@ public class PlayerMovement : MonoBehaviour
     private bool hasEnteredChopState;
     private bool hasPendingChopHit;
     private float chopStartTime;
+    private static readonly int SwordTrigger = Animator.StringToHash("Sword");
+    private bool hasSwordTrigger;
+    private bool isSwingingSword;
+    private bool hasEnteredSwordState;
+    private float swordStartTime;
+    private bool hasPendingSwordHit;
 
     private void Awake()
     {
@@ -106,15 +119,20 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         UpdateChopLock();
-        input = isChopping ? Vector2.zero : ReadInput();
+        UpdateSwordLock();
+        input = isChopping || isSwingingSword ? Vector2.zero : ReadInput();
 
         if (input.sqrMagnitude > 0f)
             facingDirection = GetCardinalDirection(input);
 
         UpdateAnimator();
 
-        if (!isChopping)
+        if (!isChopping && !isSwingingSword && !DevConsole.IsOpen)
+        {
             TryTriggerChop();
+            if (!isChopping && Keyboard.current != null && Keyboard.current[swordKey].wasPressedThisFrame)
+                TryStartSword();
+        }
     }
 
     private void FixedUpdate()
@@ -127,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         body.MovePosition(targetPosition);
+        GameAudio.Footstep();
     }
 
     private Vector2 ReadInput()
@@ -179,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
     /// <summary>Starts the chopping action. Used by the R key and developer tools.</summary>
     public bool TryStartChop()
     {
-        if (isChopping || !hasChopTrigger || animator == null)
+        if (isChopping || isSwingingSword || !hasChopTrigger || animator == null)
             return false;
 
         FaceNearbyTree();
@@ -190,6 +209,91 @@ public class PlayerMovement : MonoBehaviour
         input = Vector2.zero;
         animator.SetTrigger(chopTriggerHash);
         return true;
+    }
+
+    public bool TryStartSword()
+    {
+        if (isChopping || isSwingingSword || !hasSwordTrigger || animator == null)
+            return false;
+
+        isSwingingSword = true;
+        hasEnteredSwordState = false;
+        hasPendingSwordHit = true;
+        swordStartTime = Time.unscaledTime;
+        input = Vector2.zero;
+        UpdateAnimator();
+        animator.SetTrigger(SwordTrigger);
+        GameAudio.Play(GameAudio.Sound.Swing);
+        return true;
+    }
+
+    private void UpdateSwordLock()
+    {
+        if (!isSwingingSword) return;
+        if (animator != null)
+        {
+            AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+            if (state.IsName("Base Layer.Sword"))
+            {
+                hasEnteredSwordState = true;
+                if (hasPendingSwordHit && state.normalizedTime >= swordHitTime)
+                {
+                    hasPendingSwordHit = false;
+                    HitAnimalWithSword();
+                }
+            }
+            else if (hasEnteredSwordState && !animator.IsInTransition(0))
+            {
+                hasPendingSwordHit = false;
+                isSwingingSword = false;
+                return;
+            }
+        }
+        if (Time.unscaledTime - swordStartTime >= swordFailSafeDuration)
+        {
+            if (animator != null) animator.ResetTrigger(SwordTrigger);
+            hasPendingSwordHit = false;
+            isSwingingSword = false;
+        }
+    }
+
+    private void HitAnimalWithSword()
+    {
+        ISwordTarget closest = null;
+        float bestDistance = swordRange * swordRange;
+        void Consider(ISwordTarget target)
+        {
+            if (target == null || !target.CanBeHit || target.HitCollider == null || !target.HitCollider.enabled)
+                return;
+
+            Vector2 centerOffset = (Vector2)target.HitCollider.bounds.center - body.position;
+            if (centerOffset.sqrMagnitude > 0.0001f
+                && Vector2.Dot(centerOffset.normalized, facingDirection) < 0.35f)
+                return;
+            Vector2 closestPoint = target.HitCollider.ClosestPoint(body.position);
+            float distance = (closestPoint - body.position).sqrMagnitude;
+            if (distance > bestDistance) return;
+            bool blocked = false;
+            foreach (RaycastHit2D hit in Physics2D.LinecastAll(body.position, closestPoint))
+            {
+                Collider2D collider = hit.collider;
+                if (collider == null || collider.isTrigger || collider == target.HitCollider
+                    || collider.transform == transform || collider.transform.IsChildOf(transform)
+                    || collider.transform.IsChildOf(target.HitCollider.transform))
+                    continue;
+                blocked = true;
+                break;
+            }
+            if (blocked) return;
+            bestDistance = distance;
+            closest = target;
+        }
+
+        foreach (PigWander animal in FindObjectsByType<PigWander>(FindObjectsInactive.Exclude)) Consider(animal);
+        foreach (IslandZombie zombie in FindObjectsByType<IslandZombie>(FindObjectsInactive.Exclude)) Consider(zombie);
+
+        if (closest != null && closest.TakeDamage(swordDamage, facingDirection))
+            GameAudio.Play(GameAudio.Sound.Hit);
     }
 
     private void TryChopNearbyTree()
@@ -373,6 +477,8 @@ public class PlayerMovement : MonoBehaviour
                 hasLastMoveY = true;
             else if (parameter.nameHash == chopTriggerHash && parameter.type == AnimatorControllerParameterType.Trigger)
                 hasChopTrigger = true;
+            else if (parameter.nameHash == SwordTrigger && parameter.type == AnimatorControllerParameterType.Trigger)
+                hasSwordTrigger = true;
         }
     }
 

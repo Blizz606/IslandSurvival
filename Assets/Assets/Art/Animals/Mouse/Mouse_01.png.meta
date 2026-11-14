@@ -112,7 +112,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -126,7 +126,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -193,12 +193,12 @@ TextureImporter:
       name: Mouse_01_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 106
-        width: 14
-        height: 14
+        x: 0
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: Mouse_01_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 106
-        width: 14
-        height: 13
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -237,12 +237,12 @@ TextureImporter:
       name: Mouse_01_2
       rect:
         serializedVersion: 2
-        x: 73
-        y: 106
-        width: 14
-        height: 12
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -259,12 +259,12 @@ TextureImporter:
       name: Mouse_01_3
       rect:
         serializedVersion: 2
-        x: 105
-        y: 106
-        width: 14
-        height: 11
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -281,12 +281,12 @@ TextureImporter:
       name: Mouse_01_4
       rect:
         serializedVersion: 2
-        x: 137
-        y: 106
-        width: 14
-        height: 12
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -303,12 +303,12 @@ TextureImporter:
       name: Mouse_01_5
       rect:
         serializedVersion: 2
-        x: 169
-        y: 106
-        width: 14
-        height: 14
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -325,12 +325,12 @@ TextureImporter:
       name: Mouse_01_6
       rect:
         serializedVersion: 2
-        x: 9
-        y: 74
-        width: 14
-        height: 15
+        x: 0
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -347,12 +347,12 @@ TextureImporter:
       name: Mouse_01_7
       rect:
         serializedVersion: 2
-        x: 41
-        y: 74
-        width: 14
-        height: 14
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -369,12 +369,12 @@ TextureImporter:
       name: Mouse_01_8
       rect:
         serializedVersion: 2
-        x: 73
-        y: 74
-        width: 14
-        height: 14
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -391,12 +391,12 @@ TextureImporter:
       name: Mouse_01_9
       rect:
         serializedVersion: 2
-        x: 105
-        y: 74
-        width: 14
-        height: 12
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -413,12 +413,12 @@ TextureImporter:
       name: Mouse_01_10
       rect:
         serializedVersion: 2
-        x: 137
-        y: 74
-        width: 14
-        height: 12
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -435,12 +435,12 @@ TextureImporter:
       name: Mouse_01_11
       rect:
         serializedVersion: 2
-        x: 169
-        y: 74
-        width: 14
-        height: 14
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -457,12 +457,12 @@ TextureImporter:
       name: Mouse_01_12
       rect:
         serializedVersion: 2
-        x: 9
-        y: 42
-        width: 14
-        height: 15
+        x: 0
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -479,12 +479,12 @@ TextureImporter:
       name: Mouse_01_13
       rect:
         serializedVersion: 2
-        x: 41
-        y: 42
-        width: 15
-        height: 13
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -501,12 +501,12 @@ TextureImporter:
       name: Mouse_01_14
       rect:
         serializedVersion: 2
-        x: 73
-        y: 42
-        width: 16
-        height: 15
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -523,12 +523,12 @@ TextureImporter:
       name: Mouse_01_15
       rect:
         serializedVersion: 2
-        x: 105
-        y: 42
-        width: 17
-        height: 13
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -545,12 +545,12 @@ TextureImporter:
       name: Mouse_01_16
       rect:
         serializedVersion: 2
-        x: 137
-        y: 42
-        width: 18
-        height: 15
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -567,12 +567,12 @@ TextureImporter:
       name: Mouse_01_17
       rect:
         serializedVersion: 2
-        x: 169
-        y: 42
-        width: 18
-        height: 13
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -589,12 +589,12 @@ TextureImporter:
       name: Mouse_01_18
       rect:
         serializedVersion: 2
-        x: 201
-        y: 42
-        width: 16
-        height: 15
+        x: 192
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -611,12 +611,12 @@ TextureImporter:
       name: Mouse_01_19
       rect:
         serializedVersion: 2
-        x: 233
-        y: 42
-        width: 16
-        height: 13
+        x: 224
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -633,12 +633,12 @@ TextureImporter:
       name: Mouse_01_20
       rect:
         serializedVersion: 2
-        x: 265
-        y: 42
-        width: 14
-        height: 15
+        x: 256
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -655,12 +655,12 @@ TextureImporter:
       name: Mouse_01_21
       rect:
         serializedVersion: 2
-        x: 297
-        y: 42
-        width: 15
-        height: 15
+        x: 288
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -677,12 +677,12 @@ TextureImporter:
       name: Mouse_01_22
       rect:
         serializedVersion: 2
-        x: 9
-        y: 10
-        width: 14
-        height: 14
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -699,12 +699,12 @@ TextureImporter:
       name: Mouse_01_23
       rect:
         serializedVersion: 2
-        x: 41
-        y: 10
-        width: 14
-        height: 14
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -721,12 +721,12 @@ TextureImporter:
       name: Mouse_01_24
       rect:
         serializedVersion: 2
-        x: 73
-        y: 10
-        width: 14
-        height: 14
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -743,12 +743,12 @@ TextureImporter:
       name: Mouse_01_25
       rect:
         serializedVersion: 2
-        x: 105
-        y: 10
-        width: 14
-        height: 14
+        x: 96
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -765,7 +765,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ab8c4406595454146ade8098cdde0593
     internalID: 0
     vertices: []
     indices: 
@@ -773,7 +773,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":32.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Mouse_01_0: 2090209938786490446
       Mouse_01_1: 1014167582549792641

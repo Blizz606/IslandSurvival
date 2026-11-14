@@ -1,0 +1,938 @@
+fileFormatVersion: 2
+guid: 38b420cb8c8b33148ae036036512c4c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2310803900681088269
+    second: zombie_kid_0
+  - first:
+      213: -2503149522751366114
+    second: zombie_kid_1
+  - first:
+      213: 7598031852838925100
+    second: zombie_kid_2
+  - first:
+      213: -6889531431400139152
+    second: zombie_kid_3
+  - first:
+      213: -7122106379347238329
+    second: zombie_kid_4
+  - first:
+      213: 2956440047502857186
+    second: zombie_kid_5
+  - first:
+      213: 6807834598992006631
+    second: zombie_kid_6
+  - first:
+      213: -1439955218142789872
+    second: zombie_kid_7
+  - first:
+      213: -8318547140382587264
+    second: zombie_kid_8
+  - first:
+      213: 2006552252500122293
+    second: zombie_kid_9
+  - first:
+      213: 1882112639424560567
+    second: zombie_kid_10
+  - first:
+      213: -1537408989390284392
+    second: zombie_kid_11
+  - first:
+      213: 2133720303736510902
+    second: zombie_kid_12
+  - first:
+      213: -7705160405683168476
+    second: zombie_kid_13
+  - first:
+      213: 141392325988185796
+    second: zombie_kid_14
+  - first:
+      213: -2426811583126485080
+    second: zombie_kid_15
+  - first:
+      213: 4702580882300747236
+    second: zombie_kid_16
+  - first:
+      213: -3844235704950566310
+    second: zombie_kid_17
+  - first:
+      213: 2483977007807818031
+    second: zombie_kid_18
+  - first:
+      213: -266415628451180005
+    second: zombie_kid_19
+  - first:
+      213: 8129815066865960012
+    second: zombie_kid_20
+  - first:
+      213: -6445536169256638983
+    second: zombie_kid_21
+  - first:
+      213: 2526616386744257225
+    second: zombie_kid_22
+  - first:
+      213: -750975544378880497
+    second: zombie_kid_23
+  - first:
+      213: 3394894207453673438
+    second: zombie_kid_24
+  - first:
+      213: -7324010620903788383
+    second: zombie_kid_25
+  - first:
+      213: 8717272426386463528
+    second: zombie_kid_26
+  - first:
+      213: 333624137985298906
+    second: zombie_kid_27
+  - first:
+      213: 4225840588361853136
+    second: zombie_kid_28
+  - first:
+      213: -1161285408917386907
+    second: zombie_kid_29
+  - first:
+      213: -7810823451897002460
+    second: zombie_kid_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 0
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: zombie_kid_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 127
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f2115278106eefd0800000000000000
+      internalID: -2310803900681088269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 143
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1c57b475c6034dd0800000000000000
+      internalID: -2503149522751366114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 127
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c23319cc6b1a17960800000000000000
+      internalID: 7598031852838925100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 143
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 076918a5aa77360a0800000000000000
+      internalID: -6889531431400139152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 127
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 742e6768bf1392d90800000000000000
+      internalID: -7122106379347238329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 143
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3952f2f82670920800000000000000
+      internalID: 2956440047502857186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 95
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed48829f794a7e50800000000000000
+      internalID: 6807834598992006631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 111
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ff02abb50440ce0800000000000000
+      internalID: -1439955218142789872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 95
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 086872a03759e8c80800000000000000
+      internalID: -8318547140382587264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 111
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba978974a4b8db10800000000000000
+      internalID: 2006552252500122293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 95
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd7c24497b9e1a10800000000000000
+      internalID: 1882112639424560567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_11
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 111
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89956e07ba60aaae0800000000000000
+      internalID: -1537408989390284392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 80
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9d042bf4f7c9d10800000000000000
+      internalID: 2133720303736510902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_13
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 79
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42b99d94f65c11590800000000000000
+      internalID: -7705160405683168476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_14
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 79
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6fd74429356f100800000000000000
+      internalID: 141392325988185796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_15
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 63
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a741f219bb325ed0800000000000000
+      internalID: -2426811583126485080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_16
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 47
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ed3419a56ce24140800000000000000
+      internalID: 4702580882300747236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_17
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 63
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a525c857ef786aac0800000000000000
+      internalID: -3844235704950566310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_18
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 47
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f296f9c8debd87220800000000000000
+      internalID: 2483977007807818031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_19
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 63
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b121e8fb5608d4cf0800000000000000
+      internalID: -266415628451180005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_20
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 47
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c440a2ecab7e2d070800000000000000
+      internalID: 8129815066865960012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_21
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 31
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f5a684010bdc86a0800000000000000
+      internalID: -6445536169256638983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_22
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 32
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ca82979738501320800000000000000
+      internalID: 2526616386744257225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_23
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 31
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0e8a42a8bff395f0800000000000000
+      internalID: -750975544378880497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed7be457b461d1f20800000000000000
+      internalID: 3394894207453673438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_25
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a077d10523eb5a90800000000000000
+      internalID: -7324010620903788383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_26
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b9211f519f9f870800000000000000
+      internalID: 8717272426386463528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_27
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad11c19c26541a400800000000000000
+      internalID: 333624137985298906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_28
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d86cba20a335aa30800000000000000
+      internalID: 4225840588361853136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_29
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56982a6c21942efe0800000000000000
+      internalID: -1161285408917386907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zombie_kid_30
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 33
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 426836a34716a9390800000000000000
+      internalID: -7810823451897002460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      zombie_kid_0: -2310803900681088269
+      zombie_kid_1: -2503149522751366114
+      zombie_kid_10: 1882112639424560567
+      zombie_kid_11: -1537408989390284392
+      zombie_kid_12: 2133720303736510902
+      zombie_kid_13: -7705160405683168476
+      zombie_kid_14: 141392325988185796
+      zombie_kid_15: -2426811583126485080
+      zombie_kid_16: 4702580882300747236
+      zombie_kid_17: -3844235704950566310
+      zombie_kid_18: 2483977007807818031
+      zombie_kid_19: -266415628451180005
+      zombie_kid_2: 7598031852838925100
+      zombie_kid_20: 8129815066865960012
+      zombie_kid_21: -6445536169256638983
+      zombie_kid_22: 2526616386744257225
+      zombie_kid_23: -750975544378880497
+      zombie_kid_24: 3394894207453673438
+      zombie_kid_25: -7324010620903788383
+      zombie_kid_26: 8717272426386463528
+      zombie_kid_27: 333624137985298906
+      zombie_kid_28: 4225840588361853136
+      zombie_kid_29: -1161285408917386907
+      zombie_kid_3: -6889531431400139152
+      zombie_kid_30: -7810823451897002460
+      zombie_kid_4: -7122106379347238329
+      zombie_kid_5: 2956440047502857186
+      zombie_kid_6: 6807834598992006631
+      zombie_kid_7: -1439955218142789872
+      zombie_kid_8: -8318547140382587264
+      zombie_kid_9: 2006552252500122293
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

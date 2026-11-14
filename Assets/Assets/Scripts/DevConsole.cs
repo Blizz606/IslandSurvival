@@ -32,6 +32,11 @@ public sealed class DevConsole : MonoBehaviour
 
     public static bool IsOpen => instance != null && instance.panel != null && instance.panel.activeSelf;
 
+    public static void CloseForGameOver()
+    {
+        if (IsOpen) instance.Close();
+    }
+
     private sealed class Command
     {
         public string Description;
@@ -97,51 +102,54 @@ public sealed class DevConsole : MonoBehaviour
 
     private void RegisterBuiltInCommands()
     {
-        RegisterCommand("help", "Zeigt alle Befehle.", _ => string.Join("\n", commands
+        RegisterCommand("help", "Shows all commands.", _ => string.Join("\n", commands
             .OrderBy(pair => pair.Key)
             .Select(pair => $"> {pair.Key} - {pair.Value.Description}")));
 
-        RegisterCommand("clear", "Leert die Konsolenausgabe.", _ =>
+        RegisterCommand("clear", "Clears the console output.", _ =>
         {
             logLines.Clear();
             RefreshOutput();
             return string.Empty;
         });
 
-        RegisterCommand("echo", "Schreibt Text in die Konsole.", args => string.Join(" ", args));
+        RegisterCommand("echo", "Prints text to the console.", args => string.Join(" ", args));
 
-        RegisterCommand("player", "Zeigt die Position des Spielers.", _ =>
+        RegisterCommand("player", "Shows the player position.", _ =>
         {
             Transform player = FindPlayer();
-            return player == null ? "Kein Player gefunden." : $"Player: {player.position.x:0.0}, {player.position.y:0.0}";
+            return player == null ? "Player not found." : $"Player: {player.position.x:0.0}, {player.position.y:0.0}";
         });
 
-        RegisterCommand("chop", "Spielt die aktuelle Fäll-Animation ab.", _ =>
+        RegisterCommand("chop", "Plays the chop animation.", _ =>
         {
             PlayerMovement player = FindAnyObjectByType<PlayerMovement>();
             if (player == null)
-                return "Kein Player gefunden.";
+                return "Player not found.";
 
             return player.TryStartChop()
-                ? "Fäll-Animation gestartet."
-                : "Fäll-Animation kann gerade nicht gestartet werden.";
+                ? "Chop animation started."
+                : "Cannot start the chop animation right now.";
         });
 
-        RegisterCommand("tp", "Teleportiert den Player: tp <x> <y>", TeleportPlayer);
+        RegisterCommand("tp", "Teleports the player: tp <x> <y>", TeleportPlayer);
 
-        RegisterCommand("timescale", "Setzt die Zeit: timescale <0-5>", SetTimeScale);
+        RegisterCommand("timescale", "Sets the time scale: timescale <0-5>", SetTimeScale);
 
-        RegisterCommand("reload", "Lädt die aktuelle Szene neu.", _ =>
+        RegisterCommand("reload", "Reloads the current scene.", _ =>
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            return "Szene wird neu geladen.";
+            return "Reloading scene.";
         });
         
         RegisterCommand(
-            "give", "Gibt Ressourcen: give <wood|stone> <menge>", GiveResources);
+            "give", "Gives resources: give <wood|stone|food> <amount>", GiveResources);
 
         RegisterCommand(
-            "life", "Leben ändern: life <give|remove> <halbe Herzen>", ChangeLife);
+            "life", "Leben ändern: life <give|remove> <half hearts>", ChangeLife);
+
+        RegisterCommand("time", "Day/night: time <day|night|skip|status>", ChangeWorldTime);
+        RegisterCommand("weather", "Weather: weather <rain|clear|skip|status>", ChangeWeather);
     }
 
     private void BuildUi()
@@ -163,7 +171,7 @@ public sealed class DevConsole : MonoBehaviour
         panel = CreateImage("Panel", canvasObject.transform, new Color(0.035f, 0.055f, 0.07f, 0.96f));
         SetStretch(panel.GetComponent<RectTransform>(), new Vector2(18, 18), new Vector2(-18, 255));
 
-        TextMeshProUGUI header = CreateText("Header", panel.transform, font, "DEV KONSOLE   [Ctrl + Shift + C zum Schließen]", 18, new Color(1f, 0.78f, 0.3f));
+        TextMeshProUGUI header = CreateText("Header", panel.transform, font, "DEV CONSOLE   [Ctrl + Shift + C to close]", 18, new Color(1f, 0.78f, 0.3f));
         SetTopStretch(header.rectTransform, new Vector2(16, -12), new Vector2(-16, 30));
 
         outputText = CreateText("Output", panel.transform, font, string.Empty, 16, new Color(0.9f, 0.95f, 0.96f));
@@ -179,7 +187,7 @@ public sealed class DevConsole : MonoBehaviour
         inputText.alignment = TextAlignmentOptions.MidlineLeft;
         SetStretch(inputText.rectTransform, new Vector2(12, 2), new Vector2(-12, -2));
 
-        TextMeshProUGUI placeholder = CreateText("Placeholder", inputBackground.transform, font, "Befehl eingeben ...  (help)", 18, new Color(0.55f, 0.62f, 0.65f));
+        TextMeshProUGUI placeholder = CreateText("Placeholder", inputBackground.transform, font, "Enter command ...  (help)", 18, new Color(0.55f, 0.62f, 0.65f));
         placeholder.alignment = TextAlignmentOptions.MidlineLeft;
         SetStretch(placeholder.rectTransform, new Vector2(12, 2), new Vector2(-12, -2));
 
@@ -189,7 +197,7 @@ public sealed class DevConsole : MonoBehaviour
         inputField.lineType = TMP_InputField.LineType.SingleLine;
         inputField.onSubmit.AddListener(Submit);
 
-        WriteLine("Dev-Konsole bereit. Schreibe 'help' für Befehle.");
+        WriteLine("Dev console ready. Type 'help' for commands.");
         panel.SetActive(false);
     }
 
@@ -230,7 +238,7 @@ public sealed class DevConsole : MonoBehaviour
 
         if (!commands.TryGetValue(commandName, out Command command))
         {
-            WriteLine($"Unbekannter Befehl: {commandName}. Nutze 'help'.");
+            WriteLine($"Unknown resource: {commandName}. Nutze 'help'.");
             return;
         }
 
@@ -243,18 +251,18 @@ public sealed class DevConsole : MonoBehaviour
         catch (Exception exception)
         {
             Debug.LogException(exception);
-            WriteLine($"Fehler: {exception.Message}");
+            WriteLine($"Error: {exception.Message}");
         }
     }
 
     private string TeleportPlayer(string[] args)
     {
         if (args.Length != 2 || !TryParse(args[0], out float x) || !TryParse(args[1], out float y))
-            return "Nutzung: tp <x> <y>";
+            return "Usage: tp <x> <y>";
 
         Transform player = FindPlayer();
         if (player == null)
-            return "Kein Player gefunden.";
+            return "Player not found.";
 
         Rigidbody2D body = player.GetComponent<Rigidbody2D>();
         if (body != null)
@@ -262,13 +270,13 @@ public sealed class DevConsole : MonoBehaviour
         else
             player.position = new Vector3(x, y, player.position.z);
 
-        return $"Teleportiert zu {x:0.0}, {y:0.0}.";
+        return $"Teleported to {x:0.0}, {y:0.0}.";
     }
 
     private static string SetTimeScale(string[] args)
     {
         if (args.Length != 1 || !TryParse(args[0], out float scale))
-            return "Nutzung: timescale <0-5>";
+            return "Usage: timescale <0-5>";
 
         Time.timeScale = Mathf.Clamp(scale, 0f, 5f);
         return $"Time Scale: {Time.timeScale:0.0}";
@@ -289,12 +297,12 @@ public sealed class DevConsole : MonoBehaviour
     private static string GiveResources(string[] args)
     {
         if (args.Length != 2)
-            return "Nutzung: give <material> <amount>";
+            return "Usage: give <material> <amount>";
         
         string itemId = args[0].ToLowerInvariant();
         
-        if (itemId != "wood" && itemId != "stone")
-            return "Unbekannter Befehl: " + itemId;
+        if (itemId != "wood" && itemId != "stone" && itemId != "food")
+            return "Unknown resource: " + itemId;
 
         if (!int.TryParse(args[1], out int amount) || amount <= 0)
             return "Number higher than zero required";
@@ -303,39 +311,71 @@ public sealed class DevConsole : MonoBehaviour
             UnityEngine.Object.FindAnyObjectByType<ResourceInventory>();
 
         if (inventory == null)
-            return "Kein Inventar gefunden";
+            return "Inventory not found";
         
         inventory.Add(itemId, amount);
 
-        return $"+{amount} {itemId} erhalten";
+        return $"+{amount} {itemId} received";
     }
 
     private static string ChangeLife(string[] args)
     {
         if (args.Length != 2)
-            return "Nutzung: life <give|remove> <halbe Herzen>";
+            return "Usage: life <give|remove> <half hearts>";
 
         if (!int.TryParse(args[1], out int amount) || amount <= 0)
-            return "Die Anzahl muss größer als 0 sein.";
+            return "Amount must be greater than zero.";
 
         HeartBar heartBar = UnityEngine.Object.FindAnyObjectByType<HeartBar>();
         if (heartBar == null)
-            return "Kein HeartBar gefunden.";
+            return "Heart bar not found.";
 
         string action = args[0].ToLowerInvariant();
         if (action == "give" || action == "add" || action == "heal")
         {
             heartBar.Heal(amount);
-            return $"+{amount} halbe Herzen. Leben: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
+            return $"+{amount} half hearts. Health: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
         }
 
         if (action == "remove" || action == "damage" || action == "take")
         {
             heartBar.TakeDamage(amount);
-            return $"-{amount} halbe Herzen. Leben: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
+            return $"-{amount} half hearts. Health: {heartBar.CurrentHealth}/{heartBar.MaxHealth}";
         }
 
-        return "Nutzung: life <give|remove> <halbe Herzen>";
+        return "Usage: life <give|remove> <half hearts>";
+    }
+
+    private static string ChangeWorldTime(string[] args)
+    {
+        DayNightCycle cycle = FindAnyObjectByType<DayNightCycle>();
+        if (cycle == null) return "No day-night cycle found in this scene.";
+        if (args.Length != 1) return "Usage: time <day|night|skip|status>";
+        switch (args[0].ToLowerInvariant())
+        {
+            case "day": cycle.SetNight(false); break;
+            case "night": cycle.SetNight(true); break;
+            case "skip": cycle.SkipPhase(); break;
+            case "status": break;
+            default: return "Usage: time <day|night|skip|status>";
+        }
+        return $"{(cycle.IsNight ? "Night" : "Day")}: {Mathf.CeilToInt(cycle.RemainingSeconds)} seconds remaining.";
+    }
+
+    private static string ChangeWeather(string[] args)
+    {
+        IslandWeather weather = FindAnyObjectByType<IslandWeather>();
+        if (weather == null) return "No weather system found in this scene.";
+        if (args.Length != 1) return "Usage: weather <rain|clear|skip|status>";
+        switch (args[0].ToLowerInvariant())
+        {
+            case "rain": weather.SetRain(true); break;
+            case "clear": weather.SetRain(false); break;
+            case "skip": weather.SetRain(!weather.IsRaining); break;
+            case "status": break;
+            default: return "Usage: weather <rain|clear|skip|status>";
+        }
+        return $"{(weather.IsRaining ? "Rain" : "Clear")}: about {Mathf.CeilToInt(weather.RemainingSeconds)} seconds remaining.";
     }
 
     private void WriteLine(string line)

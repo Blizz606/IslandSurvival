@@ -33,6 +33,7 @@ public sealed class HarvestableTree : HarvestableResource
     public void ConfigureFromPrefab(int hitsToFell, bool stumpBlocksPlayer)
     {
         ResolveParts();
+        EnsureCrownSway();
         remainingHits = resourceDefinition != null
             ? resourceDefinition.HitsToDeplete
             : Mathf.Max(1, hitsToFell);
@@ -77,6 +78,7 @@ public sealed class HarvestableTree : HarvestableResource
             : Mathf.Max(1, hitsToFell);
         trunk = CreateVisual("Trunk", trunkSprite, trunkOffset, treeScale, sortingLayer, trunkSortingOrder);
         crown = CreateVisual("Crown", crownSprite, Vector2.zero, treeScale, sortingLayer, crownSortingOrder);
+        EnsureCrownSway();
         stump = CreateVisual(
             "Stump",
             stumpSprite != null ? stumpSprite : trunkSprite,
@@ -166,6 +168,12 @@ public sealed class HarvestableTree : HarvestableResource
             crown = transform.Find("Crown");
         if (stump == null)
             stump = transform.Find("Stump");
+    }
+
+    private void EnsureCrownSway()
+    {
+        if (Application.isPlaying && crown != null && crown.GetComponent<CrownSway>() == null)
+            crown.gameObject.AddComponent<CrownSway>();
     }
 
     private Transform CreateVisual(

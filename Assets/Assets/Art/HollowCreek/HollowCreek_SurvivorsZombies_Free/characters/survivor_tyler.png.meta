@@ -1,0 +1,1042 @@
+fileFormatVersion: 2
+guid: c025ff5952498ad4889ff0cdab366494
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8258355841398485499
+    second: survivor_tyler_0
+  - first:
+      213: -5029718449121087192
+    second: survivor_tyler_1
+  - first:
+      213: -8308923414353158306
+    second: survivor_tyler_2
+  - first:
+      213: -5707806543036786603
+    second: survivor_tyler_3
+  - first:
+      213: -1436986250875581030
+    second: survivor_tyler_4
+  - first:
+      213: -4999428392881075049
+    second: survivor_tyler_5
+  - first:
+      213: 2442661553524409827
+    second: survivor_tyler_6
+  - first:
+      213: 4949185374457352750
+    second: survivor_tyler_7
+  - first:
+      213: -6514319159922391237
+    second: survivor_tyler_8
+  - first:
+      213: 7508092785519388505
+    second: survivor_tyler_9
+  - first:
+      213: 534752384173304538
+    second: survivor_tyler_10
+  - first:
+      213: 5556698767678472000
+    second: survivor_tyler_11
+  - first:
+      213: 2043300875839250156
+    second: survivor_tyler_12
+  - first:
+      213: 5812851124047366047
+    second: survivor_tyler_13
+  - first:
+      213: 6657221432823623283
+    second: survivor_tyler_14
+  - first:
+      213: -1495208948047276453
+    second: survivor_tyler_15
+  - first:
+      213: -5402320800152358115
+    second: survivor_tyler_16
+  - first:
+      213: 7550518268410021472
+    second: survivor_tyler_17
+  - first:
+      213: 5586695735326273531
+    second: survivor_tyler_18
+  - first:
+      213: 1323868998155112944
+    second: survivor_tyler_19
+  - first:
+      213: -4834460535255595378
+    second: survivor_tyler_20
+  - first:
+      213: 183843581518026695
+    second: survivor_tyler_21
+  - first:
+      213: -3438289917358208656
+    second: survivor_tyler_22
+  - first:
+      213: -5129915799886216751
+    second: survivor_tyler_23
+  - first:
+      213: 1857107646473668400
+    second: survivor_tyler_24
+  - first:
+      213: 953579273854353534
+    second: survivor_tyler_25
+  - first:
+      213: 2592573525589035942
+    second: survivor_tyler_26
+  - first:
+      213: 7873305737348181833
+    second: survivor_tyler_27
+  - first:
+      213: -8529578800826240698
+    second: survivor_tyler_28
+  - first:
+      213: -249265966276276831
+    second: survivor_tyler_29
+  - first:
+      213: -6140728113777514653
+    second: survivor_tyler_30
+  - first:
+      213: -1347203926877877701
+    second: survivor_tyler_31
+  - first:
+      213: 9195725028487567132
+    second: survivor_tyler_32
+  - first:
+      213: -4844228963729561481
+    second: survivor_tyler_33
+  - first:
+      213: -6132488348215438112
+    second: survivor_tyler_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: survivor_tyler_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 191
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1345312e29b9270800000000000000
+      internalID: 8258355841398485499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 207
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 821b8e718b9d23ab0800000000000000
+      internalID: -5029718449121087192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 191
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fdd8d5d26c0bc80800000000000000
+      internalID: -8308923414353158306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 207
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55854abb03cc9c0b0800000000000000
+      internalID: -5707806543036786603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_4
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 191
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9dc0794e9cce0ce0800000000000000
+      internalID: -1436986250875581030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_5
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 207
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c42526d567e9ab0800000000000000
+      internalID: -4999428392881075049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 159
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e5835cbdb316e120800000000000000
+      internalID: 2442661553524409827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 175
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e22d61c40e90fa440800000000000000
+      internalID: 4949185374457352750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 159
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b370e470d3d7895a0800000000000000
+      internalID: -6514319159922391237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_9
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 175
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9576e8ddb9a123860800000000000000
+      internalID: 7508092785519388505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_10
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 159
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ada617dc572db6700800000000000000
+      internalID: 534752384173304538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_11
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 175
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04f735ba61c5d1d40800000000000000
+      internalID: 5556698767678472000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 127
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cee94a912534b5c10800000000000000
+      internalID: 2043300875839250156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_13
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 143
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f97c21dac456ba050800000000000000
+      internalID: 5812851124047366047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 143
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ea1962f93336c50800000000000000
+      internalID: 6657221432823623283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_15
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 111
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5618aa3263ff3be0800000000000000
+      internalID: -1495208948047276453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_16
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 127
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d13f630ead91705b0800000000000000
+      internalID: -5402320800152358115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 95
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0664daa5c54d8c860800000000000000
+      internalID: 7550518268410021472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_18
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 111
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bffef44fb2ee78d40800000000000000
+      internalID: 5586695735326273531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_19
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 79
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f11034f6d35f5210800000000000000
+      internalID: 1323868998155112944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_20
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 95
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e86027bd1cb88ecb0800000000000000
+      internalID: -4834460535255595378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_21
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 79
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c71e9a63c42d8200800000000000000
+      internalID: 183843581518026695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_22
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 63
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0798e09798db840d0800000000000000
+      internalID: -3438289917358208656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_23
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 47
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d14e1c62c0eec8b0800000000000000
+      internalID: -5129915799886216751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_24
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 63
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03789b9a095c5c910800000000000000
+      internalID: 1857107646473668400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_25
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 47
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e70834b1c4bcb3d00800000000000000
+      internalID: 953579273854353534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_26
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 31
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ab01dea2ebaaf320800000000000000
+      internalID: 2592573525589035942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_27
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94feea28ad9934d60800000000000000
+      internalID: 7873305737348181833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_28
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 641bc05b549d0a980800000000000000
+      internalID: -8529578800826240698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_29
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 31
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ad0281aced6a8cf0800000000000000
+      internalID: -249265966276276831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_30
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3676904c050c7caa0800000000000000
+      internalID: -6140728113777514653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_31
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 15
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ace629a25cd4de0800000000000000
+      internalID: -1347203926877877701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_32
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 0
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c179b2f3137cd9f70800000000000000
+      internalID: 9195725028487567132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_33
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 0
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 778ad3e5c67d5ccb0800000000000000
+      internalID: -4844228963729561481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: survivor_tyler_34
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 0
+        width: 33
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e4956fa65605eaa0800000000000000
+      internalID: -6132488348215438112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      survivor_tyler_0: 8258355841398485499
+      survivor_tyler_1: -5029718449121087192
+      survivor_tyler_10: 534752384173304538
+      survivor_tyler_11: 5556698767678472000
+      survivor_tyler_12: 2043300875839250156
+      survivor_tyler_13: 5812851124047366047
+      survivor_tyler_14: 6657221432823623283
+      survivor_tyler_15: -1495208948047276453
+      survivor_tyler_16: -5402320800152358115
+      survivor_tyler_17: 7550518268410021472
+      survivor_tyler_18: 5586695735326273531
+      survivor_tyler_19: 1323868998155112944
+      survivor_tyler_2: -8308923414353158306
+      survivor_tyler_20: -4834460535255595378
+      survivor_tyler_21: 183843581518026695
+      survivor_tyler_22: -3438289917358208656
+      survivor_tyler_23: -5129915799886216751
+      survivor_tyler_24: 1857107646473668400
+      survivor_tyler_25: 953579273854353534
+      survivor_tyler_26: 2592573525589035942
+      survivor_tyler_27: 7873305737348181833
+      survivor_tyler_28: -8529578800826240698
+      survivor_tyler_29: -249265966276276831
+      survivor_tyler_3: -5707806543036786603
+      survivor_tyler_30: -6140728113777514653
+      survivor_tyler_31: -1347203926877877701
+      survivor_tyler_32: 9195725028487567132
+      survivor_tyler_33: -4844228963729561481
+      survivor_tyler_34: -6132488348215438112
+      survivor_tyler_4: -1436986250875581030
+      survivor_tyler_5: -4999428392881075049
+      survivor_tyler_6: 2442661553524409827
+      survivor_tyler_7: 4949185374457352750
+      survivor_tyler_8: -6514319159922391237
+      survivor_tyler_9: 7508092785519388505
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

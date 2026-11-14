@@ -379,6 +379,15 @@ public sealed class UltimateWorldGenerator : MonoBehaviour
             hasSpawnedCampfire = true;
         }
 
+        public bool TryGetCampfirePosition(out Vector2 position)
+        {
+            position = Vector2.zero;
+            if (!hasSpawnedCampfire || placedObjectsTilemap == null) return false;
+            if (placedObjectsTilemap.GetTile(spawnedCampfireCell) != campfireTile) return false;
+            position = placedObjectsTilemap.GetCellCenterWorld(spawnedCampfireCell);
+            return true;
+        }
+
         private bool TryFindCampfireCell(Vector3 spawnPosition, out Vector3Int campfireCell)
         {
             campfireCell = Vector3Int.zero;

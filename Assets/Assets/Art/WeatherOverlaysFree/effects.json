@@ -1,0 +1,97 @@
+{
+ "effects": [
+  {
+   "name": "rain_light",
+   "frames": 16,
+   "fps": 24,
+   "loop": true,
+   "columns": 8,
+   "rows": 2,
+   "cell": {
+    "256": [
+     256,
+     256
+    ],
+    "128": [
+     128,
+     128
+    ],
+    "pixel": [
+     64,
+     64
+    ]
+   },
+   "file": "rain_light.png"
+  },
+  {
+   "name": "snow_light",
+   "frames": 48,
+   "fps": 12,
+   "loop": true,
+   "columns": 8,
+   "rows": 6,
+   "cell": {
+    "256": [
+     256,
+     256
+    ],
+    "128": [
+     128,
+     128
+    ],
+    "pixel": [
+     64,
+     64
+    ]
+   },
+   "file": "snow_light.png"
+  },
+  {
+   "name": "fog",
+   "tile": 512,
+   "frames": 64,
+   "fps": 10,
+   "loop": true,
+   "columns": 8,
+   "rows": 8,
+   "cell": {
+    "256": [
+     256,
+     256
+    ],
+    "128": [
+     128,
+     128
+    ],
+    "pixel": [
+     128,
+     128
+    ]
+   },
+   "file": "fog.png"
+  },
+  {
+   "name": "leaves",
+   "frames": 48,
+   "fps": 12,
+   "loop": true,
+   "columns": 8,
+   "rows": 6,
+   "cell": {
+    "256": [
+     256,
+     256
+    ],
+    "128": [
+     128,
+     128
+    ],
+    "pixel": [
+     64,
+     64
+    ]
+   },
+   "file": "leaves.png"
+  }
+ ]
+}

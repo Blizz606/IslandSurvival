@@ -36,6 +36,7 @@ public sealed class HeartBar : MonoBehaviour
 
     public int CurrentHealth => currentHealth;
     public int MaxHealth => maxHealth;
+    public event System.Action<int, int> HealthChanged;
 
     private void Awake()
     {
@@ -49,16 +50,18 @@ public sealed class HeartBar : MonoBehaviour
     /// <summary>Removes health in half-heart units. TakeDamage(1) removes half a heart.</summary>
     public void TakeDamage(int amount = 1)
     {
-        if (amount <= 0)
+        if (amount <= 0 || currentHealth <= 0)
             return;
 
         int targetHeartIndex = GetDamageHeartIndex();
         currentHealth = Mathf.Max(0, currentHealth - amount);
+        if (currentHealth > 0) GameAudio.Play(GameAudio.Sound.Hurt);
         UpdateHearts();
         ShowDamageSprite(
             amount >= 2 ? fullHeartDamageSprite : halfHeartDamageSprite,
             targetHeartIndex
         );
+        HealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     /// <summary>Adds health in half-heart units.</summary>
@@ -69,6 +72,7 @@ public sealed class HeartBar : MonoBehaviour
 
         currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
         UpdateHearts();
+        HealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     /// <summary>Adds complete hearts. AddHearts(1) adds one full heart.</summary>
@@ -93,6 +97,7 @@ public sealed class HeartBar : MonoBehaviour
     {
         currentHealth = maxHealth;
         UpdateHearts();
+        HealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
     private void UpdateHearts()
